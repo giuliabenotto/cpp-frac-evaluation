@@ -1,0 +1,18 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+The generated corpora, RDF evaluation datasets, corpus/statistical CSVs,
+SPARQL queries, expected results, and original documentation in this
+repository are made available under CC BY 4.0, subject to the rights of
+their respective contributors.
+
+Official license: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+
+Reuse, adaptation, redistribution (including commercial reuse) are permitted,
+provided appropriate credit is given, a link to the license is supplied,
+and changes are indicated. The license does not impose a requirement to cite
+an associated article by DOI; please also cite the paper when available.
+
+The packaged copies of third-party ontologies in ontology/ are governed by
+their own upstream notices/licenses: see their original repositories.
+This notice does not supersede third-party license terms.

@@ -1,0 +1,36 @@
+PREFIX collscore: <https://ilc.cnr.it/klab/ontology/cooccurrence-measures#>
+PREFIX : <https://example.org/cpp-eval/>
+PREFIX cpp: <https://ilc.cnr.it/klab/ontology/cpp#>
+PREFIX frac: <http://www.w3.org/ns/lemon/frac#>
+PREFIX lexinfo: <http://www.lexinfo.net/ontology/3.0/lexinfo#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX p-plan: <http://purl.org/net/p-plan#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?collocate ?analystA ?analystB ?scoreA ?scoreB ?parameter ?valueA ?valueB
+WHERE {
+  VALUES (?runA ?runB) { (:r1 :r2) }
+  VALUES ?parameter {
+    cpp:windowLeft cpp:windowRight cpp:sentenceBoundary cpp:ordered cpp:minimumFrequency
+  }
+
+  ?observationA a frac:Collocation ;
+      frac:head :rain ; rdfs:member :rain, ?collocate ;
+      frac:observedIn ?corpus ; collscore:logDice ?scoreA ;
+      prov:wasGeneratedBy ?runA .
+  ?observationB a frac:Collocation ;
+      frac:head :rain ; rdfs:member :rain, ?collocate ;
+      frac:observedIn ?corpus ; collscore:logDice ?scoreB ;
+      prov:wasGeneratedBy ?runB .
+
+  ?runA p-plan:correspondsToStep cpp:extractCollocations ; prov:wasAssociatedWith ?analystA .
+  ?runA prov:used [ p-plan:correspondsToVariable ?parameter ; prov:value ?valueA ] .
+  ?runB p-plan:correspondsToStep cpp:extractCollocations ; prov:wasAssociatedWith ?analystB .
+  ?runB prov:used [ p-plan:correspondsToVariable ?parameter ; prov:value ?valueB ] .
+
+  ?analystA a prov:Person .
+  ?analystB a prov:Person .
+  FILTER (?collocate != :rain && ?analystA != ?analystB)
+  FILTER (?scoreA != ?scoreB && ?valueA != ?valueB)
+}
+ORDER BY ?collocate ?parameter

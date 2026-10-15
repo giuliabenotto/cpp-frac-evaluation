@@ -1,0 +1,38 @@
+PREFIX collscore: <https://ilc.cnr.it/klab/ontology/cooccurrence-measures#>
+PREFIX : <https://example.org/cpp-eval/>
+PREFIX cpp: <https://ilc.cnr.it/klab/ontology/cpp#>
+PREFIX frac: <http://www.w3.org/ns/lemon/frac#>
+PREFIX lexinfo: <http://www.lexinfo.net/ontology/3.0/lexinfo#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX p-plan: <http://purl.org/net/p-plan#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?collocate ?score ?run ?index ?software ?analyst
+WHERE {
+  ?observation a frac:Collocation ;
+      frac:head :rain ;
+      rdfs:member :rain, ?collocate ;
+      frac:observedIn :Corpus_A ;
+      collscore:logDice ?score ;
+      prov:wasGeneratedBy ?run .
+  FILTER (?collocate != :rain && ?score >= 7)
+
+  ?run p-plan:correspondsToStep cpp:extractCollocations ;
+      prov:wasAssociatedWith ?software, ?analyst ;
+      prov:used :Corpus_A, ?index .
+
+  ?run prov:used [ p-plan:correspondsToVariable cpp:windowLeft ; prov:value 5 ] .
+  ?run prov:used [ p-plan:correspondsToVariable cpp:windowRight ; prov:value 5 ] .
+  ?run prov:used [ p-plan:correspondsToVariable cpp:sentenceBoundary ; prov:value true ] .
+  ?run prov:used [ p-plan:correspondsToVariable cpp:ordered ; prov:value false ] .
+  ?run prov:used [ p-plan:correspondsToVariable cpp:minimumFrequency ; prov:value 3 ] .
+  ?run prov:used [ p-plan:correspondsToVariable cpp:posPattern ; rdf:_1 lexinfo:adjective ; rdf:_2 lexinfo:noun ] .
+  ?run prov:used [ p-plan:correspondsToVariable cpp:measures ; rdfs:member collscore:LogDice ] .
+
+  ?index p-plan:correspondsToVariable cpp:index ; prov:wasDerivedFrom :Corpus_A .
+  ?software a prov:SoftwareAgent .
+  ?analyst a prov:Person .
+  VALUES ?software { :Extractor_v1 }
+}
+ORDER BY DESC(?score)

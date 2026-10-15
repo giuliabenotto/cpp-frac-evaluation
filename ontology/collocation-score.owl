@@ -1,0 +1,1392 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#"
+     xml:base="https://ilc.cnr.it/klab/ontology/cooccurrence-measures"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:collscore="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#">
+    <owl:Ontology rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures">
+        <owl:versionIRI rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/1.1.0"/>
+        <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-10</dct:created>
+        <dct:description xml:lang="en">Unofficial, standalone OWL vocabulary for the ontological
+    representation of the eleven co-occurrence association measures
+    discussed in the DSH manuscript &apos;Dalla co-occorrenza alla
+    collocazione&apos;. Developed to address the current lack of a
+    dedicated ontological vocabulary systematically describing
+    these measures, it defines measure-specific score properties
+    as specializations (rdfs:subPropertyOf) of the general
+    OntoLex-FrAC property frac:cScore. Each measure is documented
+    through its definition, calculation formula, statistical
+    assumptions, and verified scientific references. The vocabulary
+    is neither an extension of LexInfo nor an official W3C
+    OntoLex vocabulary.</dct:description>
+        <dct:description xml:lang="it">Vocabolario OWL autonomo e non ufficiale per la rappresentazione
+    ontologica delle undici misure di associazione delle co-occorrenze
+    discusse nel manoscritto DSH &apos;Dalla co-occorrenza alla
+    collocazione&apos;. Il vocabolario nasce per colmare l&apos;attuale
+    mancanza di una descrizione ontologica sistematica di tali misure
+    e definisce proprietà specifiche per ciascuna misura come
+    specializzazioni (rdfs:subPropertyOf) della proprietà generale
+    frac:cScore di OntoLex-FrAC. Ogni misura è documentata attraverso
+    la propria definizione, la formula di calcolo, le assunzioni
+    statistiche e i riferimenti scientifici verificati.
+    Il vocabolario non costituisce un&apos;estensione di LexInfo
+    né una specifica ufficiale W3C OntoLex.</dct:description>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-10</dct:modified>
+        <dct:source rdf:resource="https://ontolex.github.io/frequency-attestation-corpus-information/"/>
+        <dct:title xml:lang="en">Co-occurrence Statistical Measures Ontology</dct:title>
+        <dct:title xml:lang="it">Ontologia delle misure statistiche di co-occorrenza</dct:title>
+        <rdfs:comment xml:lang="en">OWL 2 DL modeling choice: each metric is represented by TWO DIFFERENT IRIs: an owl:NamedIndividual of cstat:CooccurrenceMeasure (e.g. collscore:LogDice), and an owl:DatatypeProperty for recording a numeric result (e.g. collscore:logDice). The two are linked bidirectionally with annotation properties collscore:denotesMeasure and collscore:scoreProperty. These are metadata links (queryable in RDF/SPARQL), not OWL object-property axioms; no punning is used.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Scelta di modellazione OWL 2 DL: ogni misura e&apos; rappresentata da DUE IRI DISTINTI, un owl:NamedIndividual (es. collscore:LogDice) e una owl:DatatypeProperty (es. collscore:logDice). I due termini sono collegati dalle proprieta&apos; di annotazione collscore:denotesMeasure e collscore:scoreProperty, interrogabili in RDF/SPARQL. Non si utilizza il punning.</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="https://aclanthology.org/2022.gwll-1.3/"/>
+        <owl:versionInfo>1.1.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/bibliographicCitation -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/bibliographicCitation"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/identifier -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/identifier"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/references -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/references"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/source"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#inScheme"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#related -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#related"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#scopeNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#scopeNote"/>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#assumptions -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#assumptions">
+        <rdfs:comment xml:lang="en">Conditions that must hold for the formula and interpretation to be valid.</rdfs:comment>
+        <rdfs:label xml:lang="en">assumptions</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#computationNote -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#computationNote">
+        <rdfs:comment xml:lang="en">Implementation-specific considerations affecting comparability and numerical results.</rdfs:comment>
+        <rdfs:label xml:lang="en">computationNote</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#countingSpaceNote -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#countingSpaceNote">
+        <rdfs:comment xml:lang="en">Guidance for defining observation space consistently across counts.</rdfs:comment>
+        <rdfs:label xml:lang="en">countingSpaceNote</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#denotesMeasure -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#denotesMeasure">
+        <rdfs:comment xml:lang="en">Maps a datatype property for collocation scores to its corresponding named measure individual.</rdfs:comment>
+        <rdfs:label xml:lang="en">denotesMeasure</rdfs:label>
+        <skos:scopeNote xml:lang="en">OWL annotation property deliberately used to describe a datatype property without treating that property as an OWL individual; not an owl:ObjectProperty.</skos:scopeNote>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#edgeCases -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#edgeCases">
+        <rdfs:comment xml:lang="en">Undefined cases, zero handling or other boundary behavior.</rdfs:comment>
+        <rdfs:label xml:lang="en">edgeCases</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#formulaConvention -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#formulaConvention">
+        <rdfs:comment xml:lang="en">States the exact convention, including count/probability normalization and logarithm base.</rdfs:comment>
+        <rdfs:label xml:lang="en">formulaConvention</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#formulaLaTeX -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#formulaLaTeX">
+        <rdfs:comment xml:lang="en">Human-readable LaTeX expression of the selected mathematical convention.</rdfs:comment>
+        <rdfs:label xml:lang="en">formulaLaTeX</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#formulaPlain -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#formulaPlain">
+        <rdfs:comment xml:lang="en">Unambiguous plain-text mathematical expression for implementation documentation; not an executable formula language.</rdfs:comment>
+        <rdfs:label xml:lang="en">formulaPlain</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#interpretation -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#interpretation">
+        <rdfs:comment xml:lang="en">How the computed value should be interpreted in linguistic/statistical analysis.</rdfs:comment>
+        <rdfs:label xml:lang="en">interpretation</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#logarithmBase -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#logarithmBase">
+        <rdfs:comment xml:lang="en">Logarithm base used by the defined formula; use 2 or natural log e.</rdfs:comment>
+        <rdfs:label xml:lang="en">logarithmBase</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#scoreProperty -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#scoreProperty">
+        <rdfs:comment xml:lang="en">Maps a named measure individual to the numeric OWL datatype property for direct FrAC scoring.</rdfs:comment>
+        <rdfs:label xml:lang="en">scoreProperty</rdfs:label>
+        <skos:scopeNote xml:lang="en">OWL annotation property from the named measure individual to its score datatype property; not an owl:ObjectProperty.</skos:scopeNote>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#symbol -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#symbol">
+        <rdfs:comment xml:lang="en">Mathematical symbol identifying a variable.</rdfs:comment>
+        <rdfs:label xml:lang="en">symbol</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#valueRange -->
+
+    <owl:AnnotationProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#valueRange">
+        <rdfs:comment xml:lang="en">Typical or mathematical range for the standard score, given the validity assumptions.</rdfs:comment>
+        <rdfs:label xml:lang="en">valueRange</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#hasCountData -->
+
+    <owl:ObjectProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#hasCountData">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ScoreResult"/>
+        <rdfs:range rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData"/>
+        <rdfs:comment xml:lang="en">Links a score to the count data from which it can be reproduced.</rdfs:comment>
+        <rdfs:label xml:lang="en">has count data</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#hasScoreResult -->
+
+    <owl:ObjectProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#hasScoreResult">
+        <owl:inverseOf rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#scoreFor"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ScoreResult"/>
+        <rdfs:comment xml:lang="en">Connects a FrAC collocation to an individually identifiable measured score.</rdfs:comment>
+        <rdfs:label xml:lang="en">has score result</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#referenceUnit -->
+
+    <owl:ObjectProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#referenceUnit">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ScoreResult"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/lemon/frac#Observable"/>
+        <rdfs:comment xml:lang="en">Per-score directional reference (node or antecedent), avoiding the single-head limitation when different scores on one collocation have different reference units.</rdfs:comment>
+        <rdfs:label xml:lang="en">reference unit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#requiresInput -->
+
+    <owl:ObjectProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#requiresInput">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdfs:range rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#InputQuantity"/>
+        <rdfs:comment xml:lang="en">Declares a formula input variable required to compute a statistical measure.</rdfs:comment>
+        <rdfs:label xml:lang="en">requires input</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#scoreFor -->
+
+    <owl:ObjectProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#scoreFor">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ScoreResult"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:comment xml:lang="en">Identifies the FrAC collocation quantified by a score result.</rdfs:comment>
+        <rdfs:label xml:lang="en">score for</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#selectsMeasure -->
+
+    <owl:ObjectProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#selectsMeasure">
+        <rdfs:range rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdfs:comment xml:lang="en">Connects a workflow configuration or p-plan:Entity to an association-measure identifier; no restrictive domain is imposed.</rdfs:comment>
+        <rdfs:label xml:lang="en">selects measure</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#usesMeasure -->
+
+    <owl:ObjectProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#usesMeasure">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ScoreResult"/>
+        <rdfs:range rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdfs:comment xml:lang="en">Identifies the mathematical measure according to which a score result was computed.</rdfs:comment>
+        <rdfs:label xml:lang="en">uses measure</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/ns/lemon/frac#cScore -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/lemon/frac#cScore"/>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cell00 -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cell00">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Observed frequency O_00 in the 2x2 contingency table.</rdfs:comment>
+        <rdfs:label xml:lang="en">observed cell 00</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cell01 -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cell01">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Observed frequency O_01 in the 2x2 contingency table.</rdfs:comment>
+        <rdfs:label xml:lang="en">observed cell 01</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cell10 -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cell10">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Observed frequency O_10 in the 2x2 contingency table.</rdfs:comment>
+        <rdfs:label xml:lang="en">observed cell 10</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cell11 -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cell11">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Observed frequency O_11 in the 2x2 contingency table.</rdfs:comment>
+        <rdfs:label xml:lang="en">observed cell 11</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#chi2 -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#chi2">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Dunning1993"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="en">Pearson chi-squared association statistic</rdfs:label>
+        <rdfs:label xml:lang="it">Statistica chi-quadrato di Pearson</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ChiSquared"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#confidence -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#confidence">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Agrawal1993"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#FrAC2025"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="en">Association-rule confidence</rdfs:label>
+        <rdfs:label xml:lang="it">Confidenza della regola associativa</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Confidence"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cooccurrenceFrequency -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cooccurrenceFrequency">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="it">Frequenza grezza di co-occorrenza</rdfs:label>
+        <rdfs:label xml:lang="en">Raw co-occurrence frequency</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceFrequency"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#dice -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#dice">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Rychly2008"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="it">Coefficiente Dice</rdfs:label>
+        <rdfs:label xml:lang="en">Dice coefficient</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Dice"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#expectedJointCount -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#expectedJointCount">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">E11=fx*fy/N under an independence model with consistent 2x2 marginals.</rdfs:comment>
+        <rdfs:label xml:lang="en">expected joint count</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#jointCount -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#jointCount">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Joint occurrence count fxy for the defined counting space.</rdfs:comment>
+        <rdfs:label xml:lang="en">co-occurrence count</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#logDice -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#logDice">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Rychly2008"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="it">Misura associativa logDice</rdfs:label>
+        <rdfs:label xml:lang="en">logDice association score</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#LogDice"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#logLikelihood -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#logLikelihood">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Dunning1993"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="en">Log-likelihood ratio statistic (G-squared)</rdfs:label>
+        <rdfs:label xml:lang="it">Statistica del rapporto di verosimiglianza (G quadro)</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#LogLikelihood"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#pmi -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#pmi">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#ChurchHanks1990"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="it">Informazione mutua puntuale</rdfs:label>
+        <rdfs:label xml:lang="en">Pointwise mutual information</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#pmi2 -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#pmi2">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Daille1994"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="it">PMI a frequenza congiunta quadrata (PMI2)</rdfs:label>
+        <rdfs:label xml:lang="en">Squared-frequency PMI (PMI2)</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI2"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#pmi3 -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#pmi3">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Daille1994"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="en">Cubed-frequency PMI (PMI3)</rdfs:label>
+        <rdfs:label xml:lang="it">PMI a frequenza congiunta cubica (PMI3)</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI3"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#relativeFrequency -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#relativeFrequency">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#FrAC2025"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="it">Frequenza relativa di co-occorrenza</rdfs:label>
+        <rdfs:label xml:lang="en">Relative co-occurrence frequency</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#RelativeFrequency"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#sampleSize -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#sampleSize">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        <rdfs:comment xml:lang="en">Number N of elementary opportunities consistent with the joint and marginal counts (not unconditionally the corpus token count).</rdfs:comment>
+        <rdfs:label xml:lang="en">number of observation opportunities</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#scoreNumericValue -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#scoreNumericValue">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ScoreResult"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="en">A finite numeric score represented as xsd:decimal; undefined or infinite values must not be forced into this datatype.</rdfs:comment>
+        <rdfs:label xml:lang="en">score numeric value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#tScore -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#tScore">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/lemon/frac#cScore"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Collocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:comment xml:lang="en">Locally declared FrAC-compatible datatype score property; absent from LexInfo. See its named measure resource for the precise formula and references.</rdfs:comment>
+        <rdfs:label xml:lang="it">Statistica associativa t-score</rdfs:label>
+        <rdfs:label xml:lang="en">t-score association statistic</rdfs:label>
+        <denotesMeasure rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#TScore"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#xCount -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#xCount">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Marginal count fx of the first observation variable.</rdfs:comment>
+        <rdfs:label xml:lang="en">first marginal count</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#yCount -->
+
+    <owl:DatatypeProperty rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#yCount">
+        <rdfs:domain rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Marginal count fy of the second observation variable.</rdfs:comment>
+        <rdfs:label xml:lang="en">second marginal count</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/BibliographicResource -->
+
+    <owl:Class rdf:about="http://purl.org/dc/terms/BibliographicResource"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#ConceptScheme -->
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    
+
+
+    <!-- http://www.w3.org/ns/lemon/frac#Collocation -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/lemon/frac#Collocation"/>
+    
+
+
+    <!-- http://www.w3.org/ns/lemon/frac#Observable -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/lemon/frac#Observable"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Entity -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity"/>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#AssociationStrengthMeasure -->
+
+    <owl:Class rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#AssociationStrengthMeasure">
+        <rdfs:subClassOf rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdfs:label xml:lang="en">Association strength measure</rdfs:label>
+        <skos:definition xml:lang="en">A measure intended for ranking or quantifying the extent of lexical co-occurrence association.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData -->
+
+    <owl:Class rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceCountData">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:label xml:lang="en">Co-occurrence count data</rdfs:label>
+        <skos:definition xml:lang="en">Counts obtained under one common observation-space definition. For a 2-by-2 table, fxy=O11, fx=O11+O10, fy=O11+O01 and N=sum(Oij).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure -->
+
+    <owl:Class rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="en">The eleven particular mathematical measures are instances (owl:NamedIndividual) of this class. The mathematical functions are not subclasses of this class.</rdfs:comment>
+        <rdfs:label xml:lang="en">Co-occurrence statistical measure</rdfs:label>
+        <skos:definition xml:lang="en">A named quantitative function of co-occurrence observations under explicitly stated counting and sampling conventions.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CountMeasure -->
+
+    <owl:Class rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CountMeasure">
+        <rdfs:subClassOf rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdfs:label xml:lang="en">Count measure</rdfs:label>
+        <skos:definition xml:lang="en">A raw or normalized frequency-based measure, not automatically a test of statistical association.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#DirectionalMeasure -->
+
+    <owl:Class rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#DirectionalMeasure">
+        <rdfs:subClassOf rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <owl:disjointWith rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure"/>
+        <rdfs:label xml:lang="en">Directional measure</rdfs:label>
+        <skos:definition xml:lang="en">A measure defined with a reference unit (antecedent or node); generally its value changes when the arguments are exchanged.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#IndependenceTestStatistic -->
+
+    <owl:Class rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#IndependenceTestStatistic">
+        <rdfs:subClassOf rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdfs:label xml:lang="en">Independence-test statistic</rdfs:label>
+        <skos:definition xml:lang="en">A statistic measuring departure from independence under a specified null model and contingency-table sampling design.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#InputQuantity -->
+
+    <owl:Class rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#InputQuantity">
+        <rdfs:label xml:lang="en">Formula input quantity</rdfs:label>
+        <skos:definition xml:lang="en">A symbol identifying an input required to calculate one or more association measures.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ScoreResult -->
+
+    <owl:Class rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ScoreResult">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:label xml:lang="en">Computed score result</rdfs:label>
+        <skos:definition xml:lang="en">One measured numeric value, linked to a specific measure, FrAC collocation, optional source counts and a possible directional focus.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure -->
+
+    <owl:Class rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure">
+        <rdfs:subClassOf rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdfs:label xml:lang="en">Symmetric measure</rdfs:label>
+        <skos:definition xml:lang="en">A measure whose mathematical value is invariant under swapping the two arguments if the same count conventions are retained.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ChiSquared -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#ChiSquared">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#IndependenceTestStatistic"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Eij"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#N"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Oij"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Dunning1993"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:label xml:lang="en">Pearson chi-squared association statistic</rdfs:label>
+        <rdfs:label xml:lang="it">Statistica chi-quadrato di Pearson</rdfs:label>
+        <skos:altLabel xml:lang="en">χ²</skos:altLabel>
+        <skos:definition xml:lang="it">Somma, sulle quattro celle della tabella 2×2, dei quadrati degli scarti osservato-atteso rapportati alla frequenza attesa.</skos:definition>
+        <skos:definition xml:lang="en">Sum of squared differences between observed and independence-expected cell counts, divided by the expected counts, over a 2x2 table.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="en">Pearson chi-squared association statistic</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">Statistica chi-quadrato di Pearson</skos:prefLabel>
+        <assumptions xml:lang="en">A coherent 2x2 table, N&gt;0, all four Eij&gt;0; usual asymptotic chi-square p-value requires sufficient expected counts.</assumptions>
+        <computationNote xml:lang="en">The uncorrected Pearson statistic can be computed as N*(O11*O00-O10*O01)^2 / (row1*row0*col1*col0) when all margins are positive.</computationNote>
+        <edgeCases xml:lang="en">Undefined if an expected count is zero without a separately specified procedure; sensitivity to sparse tables and small expected counts can be substantial.</edgeCases>
+        <formulaConvention xml:lang="en">Standard unsigned, uncorrected Pearson chi-squared statistic for a 2x2 independence table (not a one-sided or Yates-corrected variant).</formulaConvention>
+        <formulaLaTeX>\chi^2=\sum_{i,j\in\{0,1\}}\frac{(O_{ij}-E_{ij})^2}{E_{ij}},\quad E_{ij}=\frac{O_{i+}O_{+j}}{N}</formulaLaTeX>
+        <formulaPlain>SUM_ij((Oij-Eij)**2/Eij)</formulaPlain>
+        <interpretation xml:lang="en">Large nonnegative values reject independence more strongly, but do not by themselves indicate positive versus negative lexical attraction.</interpretation>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#chi2"/>
+        <valueRange xml:lang="en">[0,+infinity) for positive expected cells</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Confidence -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Confidence">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#AssociationStrengthMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#DirectionalMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fx"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Agrawal1993"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#FrAC2025"/>
+        <rdfs:label xml:lang="en">Association-rule confidence</rdfs:label>
+        <rdfs:label xml:lang="it">Confidenza della regola associativa</rdfs:label>
+        <skos:definition xml:lang="en">Proportion of eligible observations containing x that also contain y; the conditional frequency of the directed association rule x -&gt; y.</skos:definition>
+        <skos:definition xml:lang="it">Proporzione di osservazioni valide contenenti x che contengono anche y; frequenza condizionata della regola direzionale x → y.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="en">Association-rule confidence</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">Confidenza della regola associativa</skos:prefLabel>
+        <skos:related rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#RelativeFrequency"/>
+        <assumptions xml:lang="en">fx&gt;0 and fxy&lt;=fx in one-hit-per-reference binary counting; antecedent x must be explicitly identifiable.</assumptions>
+        <edgeCases xml:lang="en">Undefined if fx=0; without binary opportunity counting the ratio is not necessarily a conditional probability.</edgeCases>
+        <formulaConvention xml:lang="en">Association-rule confidence for a binary transaction/incidence sample. It equals node-relative frequency numerically when both use exactly the same denominator and event-count scheme, but has a different analysis role.</formulaConvention>
+        <formulaLaTeX>\mathrm{conf}(x\rightarrow y)=\frac{f_{xy}}{f_x}=P(y\mid x)</formulaLaTeX>
+        <formulaPlain>fxy/fx</formulaPlain>
+        <interpretation xml:lang="en">Under binary incidence, values near 1 indicate y is strongly predictable given x; high confidence can still be driven by globally frequent y.</interpretation>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#confidence"/>
+        <valueRange xml:lang="en">[0,1] under binary incidence</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceFrequency -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceFrequency">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CountMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:label xml:lang="it">Frequenza grezza di co-occorrenza</rdfs:label>
+        <rdfs:label xml:lang="en">Raw co-occurrence frequency</rdfs:label>
+        <skos:definition xml:lang="en">Number of occurrences of the lexical pair that satisfy the declared co-occurrence extraction criteria; a baseline rather than evidence of non-random association.</skos:definition>
+        <skos:definition xml:lang="it">Numero di co-occorrenze della coppia che soddisfano i criteri di estrazione; è una misura descrittiva e non una prova di associazione non casuale.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="it">Frequenza grezza di co-occorrenza</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Raw co-occurrence frequency</skos:prefLabel>
+        <assumptions xml:lang="en">The extraction unit, window, treatment of overlapping matches and counting multiplicity are explicitly fixed.</assumptions>
+        <edgeCases xml:lang="en">A non-negative integer; zero is allowed.</edgeCases>
+        <formulaConvention xml:lang="en">Absolute count of qualifying joint occurrences, with identical units and counting policies throughout the analysis.</formulaConvention>
+        <formulaLaTeX>f_{xy}</formulaLaTeX>
+        <formulaPlain>fxy</formulaPlain>
+        <interpretation xml:lang="en">Larger values indicate more observed pair occurrences, not necessarily a stronger-than-chance lexical association.</interpretation>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#cooccurrenceFrequency"/>
+        <valueRange xml:lang="en">[0,+infinity) (integers)</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Dice -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Dice">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#AssociationStrengthMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fx"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fy"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Rychly2008"/>
+        <rdfs:label xml:lang="it">Coefficiente Dice</rdfs:label>
+        <rdfs:label xml:lang="en">Dice coefficient</rdfs:label>
+        <skos:definition xml:lang="it">Coefficiente simmetrico che rapporta il doppio della frequenza congiunta alla somma delle frequenze marginali.</skos:definition>
+        <skos:definition xml:lang="en">Symmetric overlap coefficient normalizing twice the joint count by the sum of the two marginal counts.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="it">Coefficiente Dice</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Dice coefficient</skos:prefLabel>
+        <assumptions xml:lang="en">fx+fy&gt;0; under binary incidence fxy&lt;=min(fx,fy) and marginals and joint counts are compatible.</assumptions>
+        <edgeCases xml:lang="en">Undefined when fx+fy=0; use coherent marginal counts for grammatical-relation-based co-occurrences.</edgeCases>
+        <formulaConvention xml:lang="en">Standard Dice/Sorensen-Dice overlap coefficient, not the erroneous 2*fxy/(fx*fy) expression sometimes printed in secondary specifications.</formulaConvention>
+        <formulaLaTeX>\mathrm{Dice}(x,y)=\frac{2 f_{xy}}{f_x+f_y}</formulaLaTeX>
+        <formulaPlain>2*fxy/(fx+fy)</formulaPlain>
+        <interpretation xml:lang="en">Higher values mean greater mutual overlap; 0 means no observed co-occurrence and 1 means complete overlap under binary incidence.</interpretation>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#dice"/>
+        <valueRange xml:lang="en">[0,1] under coherent binary incidence</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#E11 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#E11">
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#InputQuantity"/>
+        <rdfs:label xml:lang="en">E11</rdfs:label>
+        <skos:definition xml:lang="en">Expected joint count under independence: E11=fx*fy/N.</skos:definition>
+        <symbol>E_{11}</symbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Eij -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Eij">
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#InputQuantity"/>
+        <rdfs:label xml:lang="en">Eij</rdfs:label>
+        <skos:definition xml:lang="en">Expected counts in the 2-by-2 contingency table under independence: Eij=(row_i*column_j)/N.</skos:definition>
+        <symbol>E_{ij}</symbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#LogDice -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#LogDice">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#AssociationStrengthMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fx"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fy"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Rychly2008"/>
+        <rdfs:label xml:lang="it">Misura associativa logDice</rdfs:label>
+        <rdfs:label xml:lang="en">logDice association score</rdfs:label>
+        <skos:definition xml:lang="en">Lexicography-oriented logarithmic transformation of the Dice coefficient with the additive constant 14.</skos:definition>
+        <skos:definition xml:lang="it">Trasformazione logaritmica del coefficiente Dice, incrementata di 14, per l’ordinamento lessicografico delle co-occorrenze.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="it">Misura associativa logDice</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">logDice association score</skos:prefLabel>
+        <skos:related rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Dice"/>
+        <assumptions xml:lang="en">fxy&gt;0, fx+fy&gt;0, fxy&lt;=min(fx,fy) for usual bounded interpretation; the same grammatical relation/counting scheme is applied to all observations.</assumptions>
+        <computationNote xml:lang="en">If comparing outputs of different systems, record whether fx and fy are global lexical frequencies or frequency margins restricted to a grammatical relation; otherwise the same name logDice can conceal different normalization.</computationNote>
+        <edgeCases xml:lang="en">If fxy=0, logDice tends to -infinity, which cannot be encoded as xsd:decimal; omit undefined score or document a separate finite approximation.</edgeCases>
+        <formulaConvention xml:lang="en">Rychlý (2008) canonical score. The additive constant +14 MUST NOT be omitted. In Sketch Engine Word Sketch contexts, use marginals of the specified grammatical relation rather than arbitrary global token frequencies.</formulaConvention>
+        <formulaLaTeX>\mathrm{logDice}(x,y)=14+\log_2\left(\frac{2 f_{xy}}{f_x+f_y}\right)</formulaLaTeX>
+        <formulaPlain>14 + log2(2*fxy/(fx+fy))</formulaPlain>
+        <interpretation xml:lang="en">An increase by one score point corresponds to doubling of the Dice coefficient. Upper bound is 14 under coherent binary incidence; greater values indicate stronger overlap.</interpretation>
+        <logarithmBase>2</logarithmBase>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#logDice"/>
+        <valueRange xml:lang="en">(-infinity,14] under coherent incidence; 14 is the maximum</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#LogLikelihood -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#LogLikelihood">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#IndependenceTestStatistic"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Eij"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#N"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Oij"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Dunning1993"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:label xml:lang="en">Log-likelihood ratio statistic (G-squared)</rdfs:label>
+        <rdfs:label xml:lang="it">Statistica del rapporto di verosimiglianza (G quadro)</rdfs:label>
+        <skos:altLabel xml:lang="en">G²</skos:altLabel>
+        <skos:definition xml:lang="it">Il doppio della divergenza logaritmica fra frequenze osservate e attese nelle quattro celle di una tabella 2×2, assumendo indipendenza.</skos:definition>
+        <skos:definition xml:lang="en">Twice the observed-versus-expected log-likelihood divergence across a 2x2 contingency table under the null hypothesis of independence.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="en">Log-likelihood ratio statistic (G-squared)</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">Statistica del rapporto di verosimiglianza (G quadro)</skos:prefLabel>
+        <assumptions xml:lang="en">A coherent table of nonnegative counts, N&gt;0, positive expected cells when a term is evaluated; model based on comparable binary sample opportunities.</assumptions>
+        <computationNote xml:lang="en">The 2x2 cells can be reconstructed when counts represent binary incidence: O11=fxy, O10=fx-fxy, O01=fy-fxy, O00=N-fx-fy+fxy. All cells must be nonnegative.</computationNote>
+        <edgeCases xml:lang="en">Use the limit 0*ln(0/E)=0; avoid log(0). Null row/column margins can make the reference test degenerate. Asymptotic p-value approximations require adequate expected counts.</edgeCases>
+        <formulaConvention xml:lang="en">Unsigned, two-sided 2x2 likelihood-ratio statistic G^2 (natural logarithm). It is NOT the signed one-sided variant used in some collocation tools.</formulaConvention>
+        <formulaLaTeX>G^2=2\sum_{i,j\in\{0,1\}}O_{ij}\ln\left(\frac{O_{ij}}{E_{ij}}\right),\quad E_{ij}=\frac{O_{i+}O_{+j}}{N}</formulaLaTeX>
+        <formulaPlain>2 * SUM_ij(Oij * ln(Oij/Eij)), convention 0*ln(0/E)=0</formulaPlain>
+        <interpretation xml:lang="en">A large nonnegative value indicates departure from independence, regardless of attraction versus repulsion; examine the sign of fxy-E11 separately.</interpretation>
+        <logarithmBase>e</logarithmBase>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#logLikelihood"/>
+        <valueRange xml:lang="en">[0,+infinity) for valid 2x2 tables</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <dct:title xml:lang="en">Measures explicitly cited in the DSH co-occurrence manuscript</dct:title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#N -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#N">
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#InputQuantity"/>
+        <rdfs:label xml:lang="en">N</rdfs:label>
+        <skos:definition xml:lang="en">Total number of compatible elementary observation opportunities for the same counting model; for a binary 2x2 table N=sum(Oij).</skos:definition>
+        <countingSpaceNote xml:lang="en">In a fixed-window analysis, raw corpus token count need not equal the number of valid node/collocate opportunities. The count of observed opportunities and all relevant margins must be coherent. For overlapping windows or multiple collocate hits per node, adapt marginals and formulas or specify a counting correction.</countingSpaceNote>
+        <symbol>N</symbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Oij -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Oij">
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#InputQuantity"/>
+        <rdfs:label xml:lang="en">Oij</rdfs:label>
+        <skos:definition xml:lang="en">Observed counts in the four cells of a 2-by-2 contingency table, i,j in {0,1}.</skos:definition>
+        <symbol>O_{ij}</symbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#AssociationStrengthMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#E11"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#N"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fx"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fy"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#ChurchHanks1990"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:label xml:lang="it">Informazione mutua puntuale</rdfs:label>
+        <rdfs:label xml:lang="en">Pointwise mutual information</rdfs:label>
+        <skos:altLabel xml:lang="en">MI-score</skos:altLabel>
+        <skos:definition xml:lang="en">Base-two logarithm of the ratio of observed joint co-occurrence frequency to its independence expectation.</skos:definition>
+        <skos:definition xml:lang="it">Logaritmo in base due del rapporto tra frequenza congiunta osservata e frequenza attesa in caso di indipendenza.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="it">Informazione mutua puntuale</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Pointwise mutual information</skos:prefLabel>
+        <assumptions xml:lang="en">N&gt;0, fx&gt;0, fy&gt;0, fxy&gt;0 and all counts refer to the same opportunity sample.</assumptions>
+        <edgeCases xml:lang="en">For fxy=0 the logarithm is negative infinity; do not encode a non-finite value as xsd:decimal.</edgeCases>
+        <formulaConvention xml:lang="en">Base-2 count-derived pointwise MI; E11=fx*fy/N with a coherent observation space.</formulaConvention>
+        <formulaLaTeX>\mathrm{PMI}(x,y)=\log_2\left(\frac{f_{xy}N}{f_x f_y}\right)=\log_2\left(\frac{f_{xy}}{E_{11}}\right)</formulaLaTeX>
+        <formulaPlain>log2((fxy*N)/(fx*fy)) = log2(fxy/E11)</formulaPlain>
+        <interpretation xml:lang="en">Zero corresponds to empirical independence, positive values to attraction, negative values to repulsion; rare pairs can be over-ranked.</interpretation>
+        <logarithmBase>2</logarithmBase>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#pmi"/>
+        <valueRange xml:lang="en">Finite real values for fxy&gt;0; theoretically can tend to -infinity</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI2 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI2">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#AssociationStrengthMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#E11"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#N"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fx"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fy"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Daille1994"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:label xml:lang="it">PMI a frequenza congiunta quadrata (PMI2)</rdfs:label>
+        <rdfs:label xml:lang="en">Squared-frequency PMI (PMI2)</rdfs:label>
+        <skos:altLabel xml:lang="en">MI2</skos:altLabel>
+        <skos:definition xml:lang="en">Heuristic MI variant that squares the observed joint count in the numerator to increase the influence of joint frequency.</skos:definition>
+        <skos:definition xml:lang="it">Variante euristica della PMI che eleva al quadrato la frequenza congiunta per aumentarne il peso.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="it">PMI a frequenza congiunta quadrata (PMI2)</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Squared-frequency PMI (PMI2)</skos:prefLabel>
+        <skos:related rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI"/>
+        <assumptions xml:lang="en">Positive count and independence expectation; common observation space; do not mix count-based and probability-based PMI2 in comparisons.</assumptions>
+        <computationNote xml:lang="en">Count-based versus probability-based PMI2 differ by the additive constant log2(N) when N is the same; rankings agree in one fixed counting space but absolute scores do not.</computationNote>
+        <edgeCases xml:lang="en">Undefined at fxy=0; the values are not normalized probabilities.</edgeCases>
+        <formulaConvention xml:lang="en">Explicit COUNT-based convention (Evert 2005, p. 89); PMI2 means frequency-squared variant, NOT PMI(x,y) squared. The probability-based convention log2(pxy^2/(px*py)) differs by log2(N) and has the same ranking only when N is fixed.</formulaConvention>
+        <formulaLaTeX>\mathrm{PMI}^2_{\mathrm{count}}(x,y)=\log_2\left(\frac{f_{xy}^{2}}{E_{11}}\right)=\log_2\left(\frac{f_{xy}^{2}N}{f_x f_y}\right)</formulaLaTeX>
+        <formulaPlain>log2((fxy**2)/E11) = log2((fxy**2*N)/(fx*fy))</formulaPlain>
+        <interpretation xml:lang="en">Usually penalizes rare joint co-occurrences more than PMI, but absolute values depend on count normalization.</interpretation>
+        <logarithmBase>2</logarithmBase>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#pmi2"/>
+        <valueRange xml:lang="en">Real-valued count-based score; not bounded independently of sample size</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI3 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI3">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#AssociationStrengthMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#E11"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#N"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fx"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fy"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Daille1994"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:label xml:lang="en">Cubed-frequency PMI (PMI3)</rdfs:label>
+        <rdfs:label xml:lang="it">PMI a frequenza congiunta cubica (PMI3)</rdfs:label>
+        <skos:altLabel xml:lang="en">MI3</skos:altLabel>
+        <skos:definition xml:lang="en">Heuristic MI variant that cubes the observed joint count in the numerator, strongly favoring frequent co-occurrences.</skos:definition>
+        <skos:definition xml:lang="it">Variante euristica della PMI che eleva al cubo la frequenza congiunta, privilegiando nettamente le coppie frequenti.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="en">Cubed-frequency PMI (PMI3)</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">PMI a frequenza congiunta cubica (PMI3)</skos:prefLabel>
+        <skos:related rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#PMI"/>
+        <assumptions xml:lang="en">Positive count and expectation; same observation sample; version/normalization and corpus size must be preserved for comparison.</assumptions>
+        <computationNote xml:lang="en">Count-based versus probability-based PMI3 differ by the additive constant 2*log2(N) when N is the same; do not compare raw scores across spaces without controlling conventions.</computationNote>
+        <edgeCases xml:lang="en">Undefined for fxy=0; no fixed corpus-independent score range.</edgeCases>
+        <formulaConvention xml:lang="en">Explicit COUNT-based convention (Evert 2005, pp. 89-90, following Daille 1994); PMI3 does NOT mean the cube of PMI. Probability-based log2(pxy^3/(px*py)) is lower by 2*log2(N).</formulaConvention>
+        <formulaLaTeX>\mathrm{PMI}^3_{\mathrm{count}}(x,y)=\log_2\left(\frac{f_{xy}^{3}}{E_{11}}\right)=\log_2\left(\frac{f_{xy}^{3}N}{f_x f_y}\right)</formulaLaTeX>
+        <formulaPlain>log2((fxy**3)/E11) = log2((fxy**3*N)/(fx*fy))</formulaPlain>
+        <interpretation xml:lang="en">Emphasizes frequency more strongly than PMI and PMI2; can place very frequent combinations high even when independence is not the main distinguishing factor.</interpretation>
+        <logarithmBase>2</logarithmBase>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#pmi3"/>
+        <valueRange xml:lang="en">Real-valued count-based score; not bounded independently of sample size</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#RelativeFrequency -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#RelativeFrequency">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CountMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#DirectionalMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fx"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#FrAC2025"/>
+        <rdfs:label xml:lang="it">Frequenza relativa di co-occorrenza</rdfs:label>
+        <rdfs:label xml:lang="en">Relative co-occurrence frequency</rdfs:label>
+        <skos:definition xml:lang="en">Frequency of y relative to a chosen reference node x; a conditional co-occurrence rate under the declared observation scheme.</skos:definition>
+        <skos:definition xml:lang="it">Rapporto tra la frequenza congiunta di x e y e quella dell’elemento di riferimento x, secondo il protocollo di conteggio.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="it">Frequenza relativa di co-occorrenza</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Relative co-occurrence frequency</skos:prefLabel>
+        <skos:related rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#Confidence"/>
+        <assumptions xml:lang="en">fx&gt;0. A [0,1] conditional probability requires at most one counted qualifying hit per reference occurrence.</assumptions>
+        <edgeCases xml:lang="en">Undefined if fx=0; multiple collocate hits per node require explicit interpretation and may yield values above 1.</edgeCases>
+        <formulaConvention xml:lang="en">Node-normalized co-occurrence rate. Under a binary single-hit-per-node protocol it estimates P(y|x); otherwise it is an event rate, potentially exceeding 1.</formulaConvention>
+        <formulaLaTeX>\mathrm{RF}(y\mid x)=\frac{f_{xy}}{f_x}</formulaLaTeX>
+        <formulaPlain>fxy / fx</formulaPlain>
+        <interpretation xml:lang="en">Indicates how often y co-occurs relative to occurrences of x; changing the reference to y usually changes the value.</interpretation>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#relativeFrequency"/>
+        <valueRange xml:lang="en">[0,1] for binary incidence; [0,+infinity) for event counts allowing multiple hits</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#TScore -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#TScore">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#AssociationStrengthMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#CooccurrenceMeasure"/>
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#SymmetricMeasure"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#E11"/>
+        <requiresInput rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy"/>
+        <dct:references rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005"/>
+        <rdfs:label xml:lang="it">Statistica associativa t-score</rdfs:label>
+        <rdfs:label xml:lang="en">t-score association statistic</rdfs:label>
+        <skos:definition xml:lang="en">Difference of observed and expected joint count divided by the square root of the observed count, used as a frequentist ranking heuristic.</skos:definition>
+        <skos:definition xml:lang="it">Differenza tra frequenza congiunta osservata e attesa, divisa per la radice quadrata della frequenza osservata.</skos:definition>
+        <skos:inScheme rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#MeasureScheme"/>
+        <skos:prefLabel xml:lang="it">Statistica associativa t-score</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">t-score association statistic</skos:prefLabel>
+        <assumptions xml:lang="en">fxy&gt;0 and E11 must derive from consistent marginals and opportunities. The statistic is not an exact p-value.</assumptions>
+        <edgeCases xml:lang="en">Undefined for fxy=0 without an independently specified convention; not inherently a calibrated probability.</edgeCases>
+        <formulaConvention xml:lang="en">Common corpus-linguistic t-score approximation (Evert 2005), not a general Student t-test on independently measured continuous observations.</formulaConvention>
+        <formulaLaTeX>t(x,y)=\frac{f_{xy}-E_{11}}{\sqrt{f_{xy}}}</formulaLaTeX>
+        <formulaPlain>(fxy - E11) / sqrt(fxy)</formulaPlain>
+        <interpretation xml:lang="en">High positive values favor frequently attested pairings above expectation; negative values suggest under-association.</interpretation>
+        <scoreProperty rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#tScore"/>
+        <valueRange xml:lang="en">Real-valued for positive fxy</valueRange>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fx -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fx">
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#InputQuantity"/>
+        <rdfs:label xml:lang="en">fx</rdfs:label>
+        <skos:definition xml:lang="en">Marginal frequency of x in the same observation space used to derive joint co-occurrences.</skos:definition>
+        <symbol>f_x</symbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fxy">
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#InputQuantity"/>
+        <rdfs:label xml:lang="en">fxy</rdfs:label>
+        <skos:definition xml:lang="en">Number of observed joint co-occurrences of x and y under the specified extraction/counting protocol.</skos:definition>
+        <symbol>f_{xy}</symbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fy -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#fy">
+        <rdf:type rdf:resource="https://ilc.cnr.it/klab/ontology/cooccurrence-measures#InputQuantity"/>
+        <rdfs:label xml:lang="en">fy</rdfs:label>
+        <skos:definition xml:lang="en">Marginal frequency of y in the same observation space used to derive joint co-occurrences.</skos:definition>
+        <symbol>f_y</symbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Agrawal1993 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Agrawal1993">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/BibliographicResource"/>
+        <dct:bibliographicCitation xml:lang="en">Rakesh Agrawal; Tomasz Imieliński; Arun Swami (1993). Mining Association Rules between Sets of Items in Large Databases. ACM SIGMOD Record 22(2): 207–216.</dct:bibliographicCitation>
+        <dct:creator>Rakesh Agrawal; Tomasz Imieliński; Arun Swami</dct:creator>
+        <dct:identifier>doi:10.1145/170036.170072</dct:identifier>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1993</dct:issued>
+        <dct:title xml:lang="en">Mining Association Rules between Sets of Items in Large Databases</dct:title>
+        <rdfs:seeAlso rdf:resource="https://doi.org/10.1145/170036.170072"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Chiarcos2022 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Chiarcos2022">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/BibliographicResource"/>
+        <dct:bibliographicCitation xml:lang="en">Christian Chiarcos; Katerina Gkirtzou; Maxim Ionov; Besim Kabashi; Fahad Khan; Ciprian-Octavian Truică (2022). Modelling Collocations in OntoLex-FrAC. Proceedings of Globalex Workshop on Linked Lexicography within LREC 2022, pp. 10–18.</dct:bibliographicCitation>
+        <dct:creator>Christian Chiarcos; Katerina Gkirtzou; Maxim Ionov; Besim Kabashi; Fahad Khan; Ciprian-Octavian Truică</dct:creator>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2022</dct:issued>
+        <dct:title xml:lang="en">Modelling Collocations in OntoLex-FrAC</dct:title>
+        <rdfs:seeAlso rdf:resource="https://aclanthology.org/2022.gwll-1.3/"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#ChurchHanks1990 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#ChurchHanks1990">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/BibliographicResource"/>
+        <dct:bibliographicCitation xml:lang="en">Kenneth Ward Church; Patrick Hanks (1990). Word Association Norms, Mutual Information, and Lexicography. Computational Linguistics 16(1): 22–29.</dct:bibliographicCitation>
+        <dct:creator>Kenneth Ward Church; Patrick Hanks</dct:creator>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1990</dct:issued>
+        <dct:title xml:lang="en">Word Association Norms, Mutual Information, and Lexicography</dct:title>
+        <rdfs:seeAlso rdf:resource="https://aclanthology.org/J90-1003/"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Daille1994 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Daille1994">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/BibliographicResource"/>
+        <dct:bibliographicCitation xml:lang="en">Béatrice Daille (1994). Approche mixte pour l&apos;extraction de terminologie : statistique lexicale et filtres linguistiques. Doctoral dissertation in computer science, Université Paris VII, February 1994.</dct:bibliographicCitation>
+        <dct:creator>Béatrice Daille</dct:creator>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1994</dct:issued>
+        <dct:title xml:lang="fr">Approche mixte pour l&apos;extraction de terminologie : statistique lexicale et filtres linguistiques</dct:title>
+        <rdfs:seeAlso rdf:resource="https://infolingu.univ-mlv.fr/Bibliographie/theses/Daille-1994.pdf"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Dunning1993 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Dunning1993">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/BibliographicResource"/>
+        <dct:bibliographicCitation xml:lang="en">Ted Dunning (1993). Accurate Methods for the Statistics of Surprise and Coincidence. Computational Linguistics 19(1): 61–74.</dct:bibliographicCitation>
+        <dct:creator>Ted Dunning</dct:creator>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1993</dct:issued>
+        <dct:title xml:lang="en">Accurate Methods for the Statistics of Surprise and Coincidence</dct:title>
+        <rdfs:seeAlso rdf:resource="https://aclanthology.org/J93-1003/"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Evert2005">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/BibliographicResource"/>
+        <dct:bibliographicCitation xml:lang="en">Stefan Evert (2005). The Statistics of Word Cooccurrences: Word Pairs and Collocations. Doctoral dissertation, University of Stuttgart (completed 2004, published 2005).</dct:bibliographicCitation>
+        <dct:creator>Stefan Evert</dct:creator>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2005</dct:issued>
+        <dct:title xml:lang="en">The Statistics of Word Cooccurrences: Word Pairs and Collocations</dct:title>
+        <rdfs:seeAlso rdf:resource="https://www.stephanie-evert.de/PUB/Evert2004phd.pdf"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#FrAC2025 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#FrAC2025">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/BibliographicResource"/>
+        <dct:bibliographicCitation xml:lang="en">Ontology-Lexica Community Group (2025). The Ontolex Module for Frequency, Attestation and Corpus Information. W3C Ontology-Lexica Community Group specification, document dated 2025-01-21.</dct:bibliographicCitation>
+        <dct:creator>Ontology-Lexica Community Group</dct:creator>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2025</dct:issued>
+        <dct:title xml:lang="en">The Ontolex Module for Frequency, Attestation and Corpus Information</dct:title>
+        <rdfs:seeAlso rdf:resource="https://ontolex.github.io/frequency-attestation-corpus-information/"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Rychly2008 -->
+
+    <owl:NamedIndividual rdf:about="https://ilc.cnr.it/klab/ontology/cooccurrence-measures/bibliography#Rychly2008">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/BibliographicResource"/>
+        <dct:bibliographicCitation xml:lang="en">Pavel Rychlý (2008). A Lexicographer-Friendly Association Score. Proceedings of RASLAN 2008, pp. 6–9, Masaryk University.</dct:bibliographicCitation>
+        <dct:creator>Pavel Rychlý</dct:creator>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2008</dct:issued>
+        <dct:title xml:lang="en">A Lexicographer-Friendly Association Score</dct:title>
+        <rdfs:seeAlso rdf:resource="https://nlp.fi.muni.cz/raslan/2008/papers/13.pdf"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

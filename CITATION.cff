@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, cite this repository. Please also cite the associated article once its bibliographic details are available."
+authors:
+  - family-names: Bellandi
+    given-names: Andrea
+title: "CPP + FrAC reproducibility package for collocation processing provenance"
+version: 1.0.0

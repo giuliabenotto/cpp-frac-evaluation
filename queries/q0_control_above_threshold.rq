@@ -1,0 +1,15 @@
+PREFIX collscore: <https://ilc.cnr.it/klab/ontology/cooccurrence-measures#>
+PREFIX : <https://example.org/cpp-eval/>
+PREFIX frac: <http://www.w3.org/ns/lemon/frac#>
+PREFIX lexinfo: <http://www.lexinfo.net/ontology/3.0/lexinfo#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?observation ?collocate ?score
+WHERE {
+  ?observation a frac:Collocation ;
+      frac:head :rain ;
+      rdfs:member :rain, ?collocate ;
+      collscore:logDice ?score .
+  FILTER (?collocate != :rain && ?score >= 7)
+}
+ORDER BY ?observation

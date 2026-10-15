@@ -1,0 +1,27 @@
+PREFIX collscore: <https://ilc.cnr.it/klab/ontology/cooccurrence-measures#>
+PREFIX : <https://example.org/cpp-eval/>
+PREFIX cpp: <https://ilc.cnr.it/klab/ontology/cpp#>
+PREFIX frac: <http://www.w3.org/ns/lemon/frac#>
+PREFIX lexinfo: <http://www.lexinfo.net/ontology/3.0/lexinfo#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX p-plan: <http://purl.org/net/p-plan#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?collocate (COUNT(DISTINCT ?run) AS ?support)
+       (MIN(?score) AS ?minimumScore) (MAX(?score) AS ?maximumScore)
+WHERE {
+  VALUES ?run { :r1 :r2 :r5 }
+
+  ?run p-plan:correspondsToStep cpp:extractCollocations ;
+      prov:wasAssociatedWith :Extractor_v1 ;
+      prov:used :Corpus_A, :Index_A .
+
+  ?observation a frac:Collocation ;
+      frac:head :rain ; rdfs:member :rain, ?collocate ;
+      frac:observedIn :Corpus_A ; collscore:logDice ?score ;
+      prov:wasGeneratedBy ?run .
+  FILTER (?collocate != :rain && ?score >= 7)
+}
+GROUP BY ?collocate
+HAVING (COUNT(DISTINCT ?run) = 3)
+ORDER BY ?collocate

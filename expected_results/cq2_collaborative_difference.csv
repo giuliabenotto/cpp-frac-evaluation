@@ -3,9 +3,9 @@ ex:commit,ex:Lexicographer_A,ex:Lexicographer_B,9.62,10.09,cpp:windowLeft,5,10
 ex:commit,ex:Lexicographer_A,ex:Lexicographer_B,9.62,10.09,cpp:windowRight,5,10
 ex:investigate,ex:Lexicographer_A,ex:Lexicographer_B,7.25,7.92,cpp:windowLeft,5,10
 ex:investigate,ex:Lexicographer_A,ex:Lexicographer_B,7.25,7.92,cpp:windowRight,5,10
-ex:solve,ex:Lexicographer_A,ex:Lexicographer_B,5.34,6.17,cpp:windowLeft,5,10
-ex:solve,ex:Lexicographer_A,ex:Lexicographer_B,5.34,6.17,cpp:windowRight,5,10
 ex:prevent,ex:Lexicographer_A,ex:Lexicographer_B,6.87,7.59,cpp:windowLeft,5,10
 ex:prevent,ex:Lexicographer_A,ex:Lexicographer_B,6.87,7.59,cpp:windowRight,5,10
 ex:report,ex:Lexicographer_A,ex:Lexicographer_B,9.31,9.81,cpp:windowLeft,5,10
 ex:report,ex:Lexicographer_A,ex:Lexicographer_B,9.31,9.81,cpp:windowRight,5,10
+ex:solve,ex:Lexicographer_A,ex:Lexicographer_B,5.34,6.17,cpp:windowLeft,5,10
+ex:solve,ex:Lexicographer_A,ex:Lexicographer_B,5.34,6.17,cpp:windowRight,5,10

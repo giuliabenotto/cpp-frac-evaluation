@@ -33,8 +33,8 @@ PROFILE = {
     },
 }
 
-STANDALONE_ADJ = 320
-STANDALONE_RAIN = 5000
+STANDALONE_VERB = 320
+STANDALONE_CRIME = 5000
 FILLER_SENTENCES = 3000
 
 CLOSE_TEMPLATES = [
@@ -53,14 +53,14 @@ DISTANT_TEMPLATES = [
     "The analysts chose to {adj} the matter after examining available details of the crime.",
 ]
 
-ADJ_ONLY_TEMPLATES = [
+VERB_ONLY_TEMPLATES = [
     "Investigators agreed to {adj} the matter during the afternoon.",
     "The local officers decided to {adj} the evidence after the briefing.",
     "The team was instructed to {adj} the case without further discussion.",
-    "The committee expects to {adj} the report before the final meeting.",
+    "The committee expects to {adj} the memorandum before the final meeting.",
 ]
 
-RAIN_ONLY_TEMPLATES = [
+CRIME_ONLY_TEMPLATES = [
     "The crime was recorded in the official register.",
     "A crime was mentioned during the public hearing.",
     "The crime remained under investigation for several months.",
@@ -72,7 +72,7 @@ FILLER_TEMPLATES = [
     "The archive was updated during the afternoon.",
     "Several officers attended the scheduled briefing.",
     "The committee reviewed its internal procedures.",
-    "A public report was published after the meeting.",
+    "A public bulletin was published after the meeting.",
     "The records were stored in the regional database.",
     "The training session ended shortly before noon.",
 ]
@@ -99,11 +99,11 @@ def build_corpus(label: str) -> tuple[str, dict]:
             lines.append(render(CLOSE_TEMPLATES[(i + idx) % len(CLOSE_TEMPLATES)], adj))
         for i in range(extra):
             lines.append(render(DISTANT_TEMPLATES[(i + idx) % len(DISTANT_TEMPLATES)], adj))
-        for i in range(STANDALONE_ADJ):
-            lines.append(render(ADJ_ONLY_TEMPLATES[(i + idx) % len(ADJ_ONLY_TEMPLATES)], adj))
+        for i in range(STANDALONE_VERB):
+            lines.append(render(VERB_ONLY_TEMPLATES[(i + idx) % len(VERB_ONLY_TEMPLATES)], adj))
 
-    for i in range(STANDALONE_RAIN):
-        lines.append(RAIN_ONLY_TEMPLATES[i % len(RAIN_ONLY_TEMPLATES)])
+    for i in range(STANDALONE_CRIME):
+        lines.append(CRIME_ONLY_TEMPLATES[i % len(CRIME_ONLY_TEMPLATES)])
     for i in range(FILLER_SENTENCES):
         lines.append(FILLER_TEMPLATES[i % len(FILLER_TEMPLATES)])
 
@@ -125,16 +125,16 @@ def analyse_corpus(text: str) -> dict:
     tokenised = [tokenise(line) for line in lines]
     all_tokens = [tok for sent in tokenised for tok in sent]
 
-    rain_count = sum(tok == "crime" for tok in all_tokens)
+    crime_count = sum(tok == "crime" for tok in all_tokens)
     collocate_stats = {}
     for adj in CORPUS_COLLOCATES:
         total_adj = sum(tok == adj for tok in all_tokens)
         within5 = 0
         within10 = 0
         for sent in tokenised:
-            rain_positions = [i for i, tok in enumerate(sent) if tok == "crime"]
+            crime_positions = [i for i, tok in enumerate(sent) if tok == "crime"]
             adj_positions = [i for i, tok in enumerate(sent) if tok == adj]
-            for r in rain_positions:
+            for r in crime_positions:
                 for a in adj_positions:
                     dist = abs(r - a)
                     if 0 < dist <= 5:
@@ -150,7 +150,7 @@ def analyse_corpus(text: str) -> dict:
     return {
         "sentences": len(lines),
         "tokens": len(all_tokens),
-        "crime": rain_count,
+        "crime": crime_count,
         "collocates": collocate_stats,
     }
 
@@ -363,7 +363,7 @@ def write_stats(stats_by_corpus, scores_by_corpus):
         writer.writerow(["corpus", "sentences", "tokens", "crime_tokens"])
         for label in ["A", "B"]:
             s = stats_by_corpus[label]
-            writer.writerow([f"Corpus_{label}", s["sentences"], s["tokens"], s["rain"]])
+            writer.writerow([f"Corpus_{label}", s["sentences"], s["tokens"], s["crime"]])
 
     with (CORPUS_DIR / "collocate_statistics.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
@@ -396,7 +396,7 @@ def main() -> None:
         for idx, adj in enumerate(CORPUS_COLLOCATES):
             assert stats["collocates"][adj]["within5"] == PROFILE[label]["close"][idx]
             assert stats["collocates"][adj]["within10"] == PROFILE[label]["close"][idx] + PROFILE[label]["extra"][idx]
-            assert stats["collocates"][adj]["frequency"] == PROFILE[label]["close"][idx] + PROFILE[label]["extra"][idx] + STANDALONE_ADJ
+            assert stats["collocates"][adj]["frequency"] == PROFILE[label]["close"][idx] + PROFILE[label]["extra"][idx] + STANDALONE_VERB
 
     scores_by_corpus = {label: score_table(stats) for label, stats in stats_by_corpus.items()}
 

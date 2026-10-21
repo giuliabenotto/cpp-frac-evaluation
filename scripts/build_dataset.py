@@ -411,7 +411,7 @@ def main() -> None:
     print("Generated corpus and RDF evaluation data")
     for label in ["A", "B"]:
         s = stats_by_corpus[label]
-        print(f"Corpus {label}: {s['sentences']} sentences, {s['tokens']} tokens, {s['rain']} crime tokens")
+        print(f"Corpus {label}: {s['sentences']} sentences, {s['tokens']} tokens, {s['crime']} crime tokens")
     print(f"Controlled corpus collocates: {len(CORPUS_COLLOCATES)}")
     print(f"RDF evaluation collocates: {len(EVAL_COLLOCATES)}")
     print(f"Observations across {len(RUNS)} runs: {len(observations)}")

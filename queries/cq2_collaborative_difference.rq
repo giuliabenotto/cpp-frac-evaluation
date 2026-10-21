@@ -15,11 +15,11 @@ WHERE {
   }
 
   ?observationA a frac:Collocation ;
-      frac:head :rain ; rdfs:member :rain, ?collocate ;
+      frac:head :crime ; rdfs:member :crime, ?collocate ;
       frac:observedIn ?corpus ; collscore:logDice ?scoreA ;
       prov:wasGeneratedBy ?runA .
   ?observationB a frac:Collocation ;
-      frac:head :rain ; rdfs:member :rain, ?collocate ;
+      frac:head :crime ; rdfs:member :crime, ?collocate ;
       frac:observedIn ?corpus ; collscore:logDice ?scoreB ;
       prov:wasGeneratedBy ?runB .
 
@@ -30,7 +30,7 @@ WHERE {
 
   ?analystA a prov:Person .
   ?analystB a prov:Person .
-  FILTER (?collocate != :rain && ?analystA != ?analystB)
+  FILTER (?collocate != :crime && ?analystA != ?analystB)
   FILTER (?scoreA != ?scoreB && ?valueA != ?valueB)
 }
 ORDER BY ?collocate ?parameter

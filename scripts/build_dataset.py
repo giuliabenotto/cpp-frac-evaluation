@@ -11,22 +11,17 @@ CORPUS_DIR = ROOT / "corpus"
 DATA_DIR = ROOT / "data"
 
 CORPUS_COLLOCATES = [
-    "heavy", "torrential", "steady", "persistent", "light", "driving",
-    "freezing", "intense", "continuous", "moderate", "incessant", "prolonged",
-    "widespread", "intermittent", "relentless", "soaking", "frequent", "occasional",
-    "scattered", "patchy", "gentle", "seasonal", "tropical", "autumnal",
+    "commit", "report", "investigate", "prevent", "solve", "detect",
+    "witness", "prosecute", "punish", "conceal", "organise", "plan",
+    "admit", "confess", "expose", "document", "combat", "reduce",
+    "record", "discuss", "analyse", "describe", "mention", "classify",
 ]
 
-# Five candidates are represented as FrAC observations. They deliberately span
-# high, near-threshold, threshold-crossing, and low-score cases. The remaining
-# corpus patterns serve as controlled background/distractor co-occurrences.
-EVAL_COLLOCATES = [
-    "heavy", "torrential", "intermittent", "soaking", "seasonal",
-]
+# Five controlled verb-noun candidates represented as FrAC observations.
+EVAL_COLLOCATES = ["commit", "report", "confess", "document", "describe"]
 
-# For every collocate, close = occurrences within 5 tokens of rain; extra =
-# additional occurrences at distance 6--10. Each adjective also occurs 320
-# times outside a rain context. The two corpus snapshots use different profiles.
+# close = co-occurrences within five tokens of crime; extra = co-occurrences
+# at distance six to ten. Profiles are held constant for reproducibility.
 PROFILE = {
     "A": {
         "close": [180,145,120,110,95,82,70,65,58,52,48,42,38,34,30,26,22,18,15,13,11,9,6,4],
@@ -43,42 +38,43 @@ STANDALONE_RAIN = 5000
 FILLER_SENTENCES = 3000
 
 CLOSE_TEMPLATES = [
-    "{Adj} rain affected the northern districts throughout the morning.",
-    "The forecast warned of {adj} rain near the coast.",
-    "After sunrise, {adj} rain moved across the valley.",
-    "Stations recorded {adj} rain during the evening period.",
-    "Residents reported {adj} rain in the central district.",
+    "Investigators were instructed to {adj} a crime under the new protocol.",
+    "The official guidelines explain how to {adj} a crime in this district.",
+    "The trained officers expect to {adj} a crime during the current operation.",
+    "The team discussed when to {adj} a crime within the reporting period.",
+    "The manual describes the steps needed to {adj} a crime correctly.",
 ]
 
+# Target distance: nine tokens (all within sentence boundaries).
 DISTANT_TEMPLATES = [
-    "{Adj} conditions developed quickly across the region before rain arrived overnight.",
-    "The {adj} weather persisted for several hours before rain reached the valley.",
-    "Residents described {adj} skies throughout the afternoon before rain began nearby.",
-    "{Adj} weather dominated much of the day before rain returned late.",
+    "Investigators decided to {adj} the case after carefully considering details of the crime.",
+    "The officers agreed to {adj} the evidence after reviewing several aspects of the crime.",
+    "The committee planned to {adj} the report after analysing multiple accounts of the crime.",
+    "The analysts chose to {adj} the matter after examining available records of the crime.",
 ]
 
 ADJ_ONLY_TEMPLATES = [
-    "Forecasters described the atmospheric pattern as {adj} during the afternoon.",
-    "The morning outlook classified local conditions as {adj} across the district.",
-    "Analysts characterised the weather pattern as {adj} during the reporting period.",
-    "Regional bulletins repeatedly used the term {adj} for current conditions.",
+    "Investigators agreed to {adj} the matter during the afternoon.",
+    "The local officers decided to {adj} the evidence after the briefing.",
+    "The team was instructed to {adj} the case without further discussion.",
+    "The committee expects to {adj} the report before the final meeting.",
 ]
 
 RAIN_ONLY_TEMPLATES = [
-    "The rain continued across the district through the evening.",
-    "Rain was recorded at several monitoring stations before dawn.",
-    "The rain reached the valley shortly after midday.",
-    "Local observers noted rain across the coastal zone during the night.",
-    "Rain affected transport services in several parts of the region.",
+    "The crime was recorded in the official register.",
+    "A crime was mentioned during the public hearing.",
+    "The crime remained under investigation for several months.",
+    "The local archive contained a summary of the crime.",
+    "The crime attracted attention from several organisations.",
 ]
 
 FILLER_TEMPLATES = [
-    "Cloud cover increased over the district during the afternoon.",
-    "Temperatures remained stable across the valley through the night.",
-    "Winds shifted gradually along the coast before sunset.",
-    "Visibility improved at several monitoring stations after dawn.",
-    "The regional forecast mentioned changing conditions later in the day.",
-    "Pressure readings varied slightly across the northern sector.",
+    "The archive was updated during the afternoon.",
+    "Several officers attended the scheduled briefing.",
+    "The committee reviewed its internal procedures.",
+    "A public report was published after the meeting.",
+    "The records were stored in the regional database.",
+    "The training session ended shortly before noon.",
 ]
 
 TOKEN_RE = re.compile(r"[A-Za-z]+")
@@ -129,14 +125,14 @@ def analyse_corpus(text: str) -> dict:
     tokenised = [tokenise(line) for line in lines]
     all_tokens = [tok for sent in tokenised for tok in sent]
 
-    rain_count = sum(tok == "rain" for tok in all_tokens)
+    rain_count = sum(tok == "crime" for tok in all_tokens)
     collocate_stats = {}
     for adj in CORPUS_COLLOCATES:
         total_adj = sum(tok == adj for tok in all_tokens)
         within5 = 0
         within10 = 0
         for sent in tokenised:
-            rain_positions = [i for i, tok in enumerate(sent) if tok == "rain"]
+            rain_positions = [i for i, tok in enumerate(sent) if tok == "crime"]
             adj_positions = [i for i, tok in enumerate(sent) if tok == adj]
             for r in rain_positions:
                 for a in adj_positions:
@@ -154,7 +150,7 @@ def analyse_corpus(text: str) -> dict:
     return {
         "sentences": len(lines),
         "tokens": len(all_tokens),
-        "rain": rain_count,
+        "crime": rain_count,
         "collocates": collocate_stats,
     }
 
@@ -167,7 +163,7 @@ def score_table(stats: dict) -> dict[str, dict[int, float]]:
     out: dict[str, dict[int, float]] = {}
     for adj in CORPUS_COLLOCATES:
         fx = stats["collocates"][adj]["frequency"]
-        fy = stats["rain"]
+        fy = stats["crime"]
         out[adj] = {
             5: round(logdice(stats["collocates"][adj]["within5"], fx, fy), 2),
             10: round(logdice(stats["collocates"][adj]["within10"], fx, fy), 2),
@@ -239,12 +235,12 @@ def description_for(run) -> str:
     software_label = software.replace("Extractor_", "Extractor ").replace("_", " ")
     return (
         f"{window_text}; sentence-bounded; unordered; minimum frequency {minimum_frequency}; "
-        f"POS pattern ADJ NOUN; logDice; {software_label}."
+        f"POS pattern VERB NOUN; logDice; {software_label}."
     )
 
 
 def write_common_entities(handle, stats_by_corpus):
-    handle.write(':rain a frac:Observable ; rdfs:label "rain"@en .\n')
+    handle.write(':crime a frac:Observable ; rdfs:label "crime"@en .\n')
     for adj in CORPUS_COLLOCATES:
         handle.write(f':{qname(adj)} a frac:Observable ; rdfs:label "{adj}"@en .\n')
     handle.write("\n")
@@ -269,7 +265,7 @@ def write_observations(handle, observations, run_lookup):
             score = f'{obs["score"]:.2f}'
             handle.write(
                 f':obs_{run_id}_{adj} a frac:Collocation ;\n'
-                f'    frac:head :rain ; rdfs:member :rain, :{adj} ; frac:observedIn :Corpus_{obs["corpus"]} ;\n'
+                f'    frac:head :crime ; rdfs:member :crime, :{adj} ; frac:observedIn :Corpus_{obs["corpus"]} ;\n'
                 f'    collscore:logDice "{score}"^^xsd:decimal ;\n'
                 f'    dct:description "{desc}"@en .\n'
             )
@@ -332,7 +328,7 @@ def write_enriched(path: Path, observations, stats_by_corpus):
         handle.write(':ordered_false a p-plan:Entity ; p-plan:correspondsToVariable cpp:ordered ; prov:value false .\n')
         handle.write(':minimumFrequency_3 a p-plan:Entity ; p-plan:correspondsToVariable cpp:minimumFrequency ; prov:value "3"^^xsd:integer .\n')
         handle.write(':minimumFrequency_10 a p-plan:Entity ; p-plan:correspondsToVariable cpp:minimumFrequency ; prov:value "10"^^xsd:integer .\n')
-        handle.write(':posPattern_ADJ_NOUN a p-plan:Entity, rdf:Seq ; p-plan:correspondsToVariable cpp:posPattern ; rdf:_1 lexinfo:adjective ; rdf:_2 lexinfo:noun .\n')
+        handle.write(':posPattern_VERB_NOUN a p-plan:Entity, rdf:Seq ; p-plan:correspondsToVariable cpp:posPattern ; rdf:_1 lexinfo:verb ; rdf:_2 lexinfo:noun .\n')
         handle.write(':measure_logDice a p-plan:Entity, rdf:Bag ; p-plan:correspondsToVariable cpp:measures ; rdfs:member collscore:LogDice .\n')
 
         handle.write("\n# Runs\n")
@@ -345,7 +341,7 @@ def write_enriched(path: Path, observations, stats_by_corpus):
                 used.append(f':windowRight_{window}')
             used.extend([
                 ':sentenceBoundary_true', ':ordered_false', f':minimumFrequency_{minfreq}',
-                ':posPattern_ADJ_NOUN', ':measure_logDice',
+                ':posPattern_VERB_NOUN', ':measure_logDice',
             ])
             obs_ids = [
                 f':obs_{run_id}_{qname(o["collocate"])}'
@@ -364,7 +360,7 @@ def write_enriched(path: Path, observations, stats_by_corpus):
 def write_stats(stats_by_corpus, scores_by_corpus):
     with (CORPUS_DIR / "corpus_statistics.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["corpus", "sentences", "tokens", "rain_tokens"])
+        writer.writerow(["corpus", "sentences", "tokens", "crime_tokens"])
         for label in ["A", "B"]:
             s = stats_by_corpus[label]
             writer.writerow([f"Corpus_{label}", s["sentences"], s["tokens"], s["rain"]])
@@ -415,7 +411,7 @@ def main() -> None:
     print("Generated corpus and RDF evaluation data")
     for label in ["A", "B"]:
         s = stats_by_corpus[label]
-        print(f"Corpus {label}: {s['sentences']} sentences, {s['tokens']} tokens, {s['rain']} rain tokens")
+        print(f"Corpus {label}: {s['sentences']} sentences, {s['tokens']} tokens, {s['rain']} crime tokens")
     print(f"Controlled corpus collocates: {len(CORPUS_COLLOCATES)}")
     print(f"RDF evaluation collocates: {len(EVAL_COLLOCATES)}")
     print(f"Observations across {len(RUNS)} runs: {len(observations)}")

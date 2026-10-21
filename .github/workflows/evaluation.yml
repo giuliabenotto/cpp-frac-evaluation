@@ -1,0 +1,35 @@
+name: Reproducibility evaluation
+
+on:
+  push:
+    branches:
+      - main
+      - feature/crime-collocations
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install evaluation dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Regenerate controlled corpora and RDF graphs
+        run: python scripts/build_dataset.py
+      - name: Verify committed artifacts are reproducible
+        run: |
+          git diff --exit-code -- corpus/corpus_a.txt corpus/corpus_b.txt \
+            corpus/corpus_statistics.csv corpus/collocate_statistics.csv \
+            data/baseline_frac.ttl data/cpp_enriched.ttl
+      - name: Run FrAC and CPP competency-query tests
+        run: python scripts/run_tests.py

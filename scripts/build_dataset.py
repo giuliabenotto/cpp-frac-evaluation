@@ -11,14 +11,14 @@ CORPUS_DIR = ROOT / "corpus"
 DATA_DIR = ROOT / "data"
 
 CORPUS_COLLOCATES = [
-    "commit", "report", "investigate", "prevent", "solve", "detect",
+    "commit", "report", "examine", "identify", "trace", "detect",
     "witness", "prosecute", "punish", "conceal", "organise", "plan",
-    "admit", "confess", "expose", "document", "combat", "reduce",
-    "record", "discuss", "analyse", "describe", "mention", "classify",
+    "admit", "investigate", "expose", "prevent", "combat", "reduce",
+    "record", "discuss", "analyse", "solve", "mention", "classify",
 ]
 
 # Five controlled verb-noun candidates represented as FrAC observations.
-EVAL_COLLOCATES = ["commit", "report", "confess", "document", "describe"]
+EVAL_COLLOCATES = ["commit", "report", "investigate", "prevent", "solve"]
 
 # close = co-occurrences within five tokens of crime; extra = co-occurrences
 # at distance six to ten. Profiles are held constant for reproducibility.
@@ -49,8 +49,8 @@ CLOSE_TEMPLATES = [
 DISTANT_TEMPLATES = [
     "Investigators decided to {adj} the case after carefully considering details of the crime.",
     "The officers agreed to {adj} the evidence after reviewing several aspects of the crime.",
-    "The committee planned to {adj} the report after analysing multiple accounts of the crime.",
-    "The analysts chose to {adj} the matter after examining available records of the crime.",
+    "The committee planned to {adj} the file after analysing multiple accounts of the crime.",
+    "The analysts chose to {adj} the matter after examining available details of the crime.",
 ]
 
 ADJ_ONLY_TEMPLATES = [

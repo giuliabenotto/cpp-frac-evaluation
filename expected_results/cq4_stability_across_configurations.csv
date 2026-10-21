@@ -1,4 +1,4 @@
 collocate,support,minimumScore,maximumScore
-ex:heavy,3,9.62,10.09
-ex:intermittent,3,7.25,7.92
-ex:torrential,3,9.31,9.81
+ex:commit,3,9.62,10.09
+ex:investigate,3,7.25,7.92
+ex:report,3,9.31,9.81

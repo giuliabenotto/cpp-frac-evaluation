@@ -8,27 +8,27 @@ This revised version replaces the original toy corpora with a substantially larg
 
 The package contains two controlled English corpus snapshots with different collocational frequency profiles:
 
-| Corpus | Sentences | Word tokens | `rain` tokens |
+| Corpus | Sentences | Word tokens | `crime` tokens |
 |---|---:|---:|---:|
-| Corpus A | 17,616 | 171,736 | 6,936 |
-| Corpus B | 17,620 | 171,764 | 6,940 |
+| Corpus A | 17,616 | 165,477 | 6,936 |
+| Corpus B | 17,620 | 165,525 | 6,940 |
 
-Each corpus contains **24 controlled adjective--`rain` patterns** plus standalone adjective occurrences, standalone `rain` occurrences, and neutral filler sentences. Of these 24 patterns, five are used as explicit FrAC evaluation candidates:
+Each corpus contains **24 controlled verb--`crime` patterns** plus standalone verb occurrences, standalone `crime` occurrences, and neutral filler sentences. Of these 24 patterns, five are used as explicit FrAC evaluation candidates:
 
-- `heavy rain`
-- `torrential rain`
-- `intermittent rain`
-- `soaking rain`
-- `seasonal rain`
+- `commit a crime`
+- `report a crime`
+- `investigate a crime`
+- `prevent a crime`
+- `solve a crime`
 
-The five candidates were selected to cover different score behaviours: clearly above threshold, near threshold, crossing the threshold when the context window is widened, and below threshold. The remaining controlled adjective--`rain` patterns act as corpus background/distractors and contribute to the corpus marginals used in score calculation.
+The five candidates were selected to cover different score behaviours: clearly above threshold, near threshold, crossing the threshold when the context window is widened, and below threshold. The remaining controlled verb--`crime` patterns act as corpus background/distractors and contribute to the corpus marginals used in score calculation.
 
-The corpora are generated deterministically by `scripts/build_dataset.py`. For each controlled adjective, the generator creates:
+The corpora are generated deterministically by `scripts/build_dataset.py`. For each controlled verb, the generator creates:
 
-1. occurrences within five tokens of `rain`;
-2. additional occurrences at distances six to ten tokens from `rain`;
-3. standalone adjective occurrences outside a `rain` context;
-4. additional `rain`-only and neutral filler sentences.
+1. occurrences within five tokens of `crime`;
+2. additional occurrences at distances six to ten tokens from `crime`;
+3. standalone verb occurrences outside a `crime` context;
+4. additional `crime`-only and neutral filler sentences.
 
 The logDice values stored in RDF are therefore no longer arbitrary scores. They are calculated directly from the generated corpus frequencies using:
 
@@ -186,10 +186,10 @@ The methodological competency queries are also executed against the FrAC baselin
 | Test | FrAC baseline | FrAC + CPP | Interpretation |
 |---|---:|---:|---|
 | Control: logDice >= 7 | 23 rows | 23 rows | CPP enrichment does not alter the linguistic/statistical observations returned by a score-only query. |
-| CQ1: protocol-aware selection | 0 structured rows | 3 rows | `heavy rain`, `torrential rain`, and `intermittent rain` satisfy both the score threshold and the complete target protocol. The incomplete-provenance run is excluded structurally. |
+| CQ1: protocol-aware selection | 0 structured rows | 3 rows | `commit a crime`, `report a crime`, and `investigate a crime` satisfy both the score threshold and the complete target protocol. The incomplete-provenance run is excluded structurally. |
 | CQ2: collaborative diagnosis | 0 structured rows | 10 rows | Five shared candidates are compared between r1 and r2; for each candidate, the two recorded differences are the left and right context windows (5 vs. 10 tokens). |
-| CQ3: controlled cross-corpus comparison | 0 structured rows | 14 rows | Compatible pairs come from r1-r3, r2-r4, and r5-r8. The stricter r5-r8 pair contributes four candidates because `seasonal rain` does not meet the minimum-frequency threshold. Runs using another software version or incomplete provenance are excluded. |
-| CQ4: stability across configurations | 0 structured rows | 3 rows | `heavy rain`, `torrential rain`, and `intermittent rain` remain at or above threshold in all three predefined runs r1, r2, and r5. |
+| CQ3: controlled cross-corpus comparison | 0 structured rows | 14 rows | Compatible pairs come from r1-r3, r2-r4, and r5-r8. The stricter r5-r8 pair contributes four candidates because `solve a crime` does not meet the minimum-frequency threshold. Runs using another software version or incomplete provenance are excluded. |
+| CQ4: stability across configurations | 0 structured rows | 3 rows | `commit a crime`, `report a crime`, and `investigate a crime` remain at or above threshold in all three predefined runs r1, r2, and r5. |
 
 The revised dataset preserves the original purpose of the evaluation while removing the most obvious toy-scale limitation. It remains a **controlled synthetic functional evaluation**, not an evaluation of extractor accuracy on a naturally sampled reference corpus. Its purpose is to test whether CPP adds method-aware queryability to FrAC observations under a substantially larger and internally coherent corpus setting.
 
@@ -218,7 +218,11 @@ This release aligns the benchmark with the supplied updated CPP ontology and Col
 - Statistical score property: `collscore:logDice` (subproperty of `frac:cScore`).
 - The configuration value for selected measures uses `collscore:LogDice` as the measure individual, distinct from the numeric scoring property.
 - The original four competency-question **semantics** and Q0 control are maintained. Query source files have been updated to use the definitive identifiers; they are therefore not byte-identical to the historical queries.
-- The original synthetic corpus generator, run specifications, ranking thresholds, and expected results are retained.
+- The eight run specifications and ranking thresholds are retained; the generator and observations now use a controlled verb–crime example.
 - Copies of the supplied CollScore ontology and the latest CPP ontology are provided in `ontology/` without modifying their content. The CPP copy is the 346-triple version supplied on 15 October 2026, whose namespace and `rdfs:isDefinedBy` statements use `https://ilc.cnr.it/klab/ontology/cpp#`. The benchmark uses the same namespace. Ontology imports and OWL-DL consistency require independent checking.
 
 Reproduce with `python scripts/build_dataset.py` and `python scripts/run_tests.py`.
+
+### Regeneration note (21 October 2026)
+
+The two synthetic corpus snapshots have been regenerated with the crime-centred templates. The supplied occurrence profiles (5-token and 10-token) are exactly reproduced for all 24 controlled verbs. The target lemma is `crime` and the POS-pattern specification is `VERB NOUN`. The five evaluated verbs are `commit`, `report`, `investigate`, `prevent`, and `solve`. The new token counts are 165,477 (Corpus A) and 165,525 (Corpus B); the frequency distribution and resulting logDice scores remain numerically the same as the former demonstration because the occurrence profiles and corpus head frequency were intentionally preserved. These are synthetic co-occurrences, not observed frequency patterns from natural corpora. Execute `python scripts/build_dataset.py` and `python scripts/run_tests.py` to validate locally.

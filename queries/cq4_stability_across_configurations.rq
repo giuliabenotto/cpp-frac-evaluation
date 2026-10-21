@@ -17,10 +17,10 @@ WHERE {
       prov:used :Corpus_A, :Index_A .
 
   ?observation a frac:Collocation ;
-      frac:head :rain ; rdfs:member :rain, ?collocate ;
+      frac:head :crime ; rdfs:member :crime, ?collocate ;
       frac:observedIn :Corpus_A ; collscore:logDice ?score ;
       prov:wasGeneratedBy ?run .
-  FILTER (?collocate != :rain && ?score >= 7)
+  FILTER (?collocate != :crime && ?score >= 7)
 }
 GROUP BY ?collocate
 HAVING (COUNT(DISTINCT ?run) = 3)

@@ -11,12 +11,12 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT DISTINCT ?collocate ?score ?run ?index ?software ?analyst
 WHERE {
   ?observation a frac:Collocation ;
-      frac:head :rain ;
-      rdfs:member :rain, ?collocate ;
+      frac:head :crime ;
+      rdfs:member :crime, ?collocate ;
       frac:observedIn :Corpus_A ;
       collscore:logDice ?score ;
       prov:wasGeneratedBy ?run .
-  FILTER (?collocate != :rain && ?score >= 7)
+  FILTER (?collocate != :crime && ?score >= 7)
 
   ?run p-plan:correspondsToStep cpp:extractCollocations ;
       prov:wasAssociatedWith ?software, ?analyst ;
@@ -27,7 +27,7 @@ WHERE {
   ?run prov:used [ p-plan:correspondsToVariable cpp:sentenceBoundary ; prov:value true ] .
   ?run prov:used [ p-plan:correspondsToVariable cpp:ordered ; prov:value false ] .
   ?run prov:used [ p-plan:correspondsToVariable cpp:minimumFrequency ; prov:value 3 ] .
-  ?run prov:used [ p-plan:correspondsToVariable cpp:posPattern ; rdf:_1 lexinfo:adjective ; rdf:_2 lexinfo:noun ] .
+  ?run prov:used [ p-plan:correspondsToVariable cpp:posPattern ; rdf:_1 lexinfo:verb ; rdf:_2 lexinfo:noun ] .
   ?run prov:used [ p-plan:correspondsToVariable cpp:measures ; rdfs:member collscore:LogDice ] .
 
   ?index p-plan:correspondsToVariable cpp:index ; prov:wasDerivedFrom :Corpus_A .

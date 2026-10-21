@@ -1,4 +1,4 @@
 collocate,score,run,index,software,analyst
-ex:heavy,9.62,ex:r1,ex:Index_A,ex:Extractor_v1,ex:Lexicographer_A
-ex:torrential,9.31,ex:r1,ex:Index_A,ex:Extractor_v1,ex:Lexicographer_A
-ex:intermittent,7.25,ex:r1,ex:Index_A,ex:Extractor_v1,ex:Lexicographer_A
+ex:commit,9.62,ex:r1,ex:Index_A,ex:Extractor_v1,ex:Lexicographer_A
+ex:report,9.31,ex:r1,ex:Index_A,ex:Extractor_v1,ex:Lexicographer_A
+ex:investigate,7.25,ex:r1,ex:Index_A,ex:Extractor_v1,ex:Lexicographer_A

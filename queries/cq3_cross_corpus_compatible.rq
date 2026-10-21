@@ -15,14 +15,14 @@ WHERE {
   }
 
   ?observationA a frac:Collocation ;
-      frac:head :rain ; rdfs:member :rain, ?collocate ;
+      frac:head :crime ; rdfs:member :crime, ?collocate ;
       frac:observedIn :Corpus_A ; collscore:logDice ?scoreA ;
       prov:wasGeneratedBy ?runA .
   ?observationB a frac:Collocation ;
-      frac:head :rain ; rdfs:member :rain, ?collocate ;
+      frac:head :crime ; rdfs:member :crime, ?collocate ;
       frac:observedIn :Corpus_B ; collscore:logDice ?scoreB ;
       prov:wasGeneratedBy ?runB .
-  FILTER (?collocate != :rain)
+  FILTER (?collocate != :crime)
 
   ?runA p-plan:correspondsToStep cpp:extractCollocations ;
       prov:wasAssociatedWith ?software ;

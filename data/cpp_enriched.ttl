@@ -10,202 +10,202 @@
 @prefix cpp: <https://ilc.cnr.it/klab/ontology/cpp#> .
 @prefix p-plan: <http://purl.org/net/p-plan#> .
 
-:rain a frac:Observable ; rdfs:label "rain"@en .
-:heavy a frac:Observable ; rdfs:label "heavy"@en .
-:torrential a frac:Observable ; rdfs:label "torrential"@en .
-:steady a frac:Observable ; rdfs:label "steady"@en .
-:persistent a frac:Observable ; rdfs:label "persistent"@en .
-:light a frac:Observable ; rdfs:label "light"@en .
-:driving a frac:Observable ; rdfs:label "driving"@en .
-:freezing a frac:Observable ; rdfs:label "freezing"@en .
-:intense a frac:Observable ; rdfs:label "intense"@en .
-:continuous a frac:Observable ; rdfs:label "continuous"@en .
-:moderate a frac:Observable ; rdfs:label "moderate"@en .
-:incessant a frac:Observable ; rdfs:label "incessant"@en .
-:prolonged a frac:Observable ; rdfs:label "prolonged"@en .
-:widespread a frac:Observable ; rdfs:label "widespread"@en .
-:intermittent a frac:Observable ; rdfs:label "intermittent"@en .
-:relentless a frac:Observable ; rdfs:label "relentless"@en .
-:soaking a frac:Observable ; rdfs:label "soaking"@en .
-:frequent a frac:Observable ; rdfs:label "frequent"@en .
-:occasional a frac:Observable ; rdfs:label "occasional"@en .
-:scattered a frac:Observable ; rdfs:label "scattered"@en .
-:patchy a frac:Observable ; rdfs:label "patchy"@en .
-:gentle a frac:Observable ; rdfs:label "gentle"@en .
-:seasonal a frac:Observable ; rdfs:label "seasonal"@en .
-:tropical a frac:Observable ; rdfs:label "tropical"@en .
-:autumnal a frac:Observable ; rdfs:label "autumnal"@en .
+:crime a frac:Observable ; rdfs:label "crime"@en .
+:commit a frac:Observable ; rdfs:label "commit"@en .
+:report a frac:Observable ; rdfs:label "report"@en .
+:examine a frac:Observable ; rdfs:label "examine"@en .
+:identify a frac:Observable ; rdfs:label "identify"@en .
+:trace a frac:Observable ; rdfs:label "trace"@en .
+:detect a frac:Observable ; rdfs:label "detect"@en .
+:witness a frac:Observable ; rdfs:label "witness"@en .
+:prosecute a frac:Observable ; rdfs:label "prosecute"@en .
+:punish a frac:Observable ; rdfs:label "punish"@en .
+:conceal a frac:Observable ; rdfs:label "conceal"@en .
+:organise a frac:Observable ; rdfs:label "organise"@en .
+:plan a frac:Observable ; rdfs:label "plan"@en .
+:admit a frac:Observable ; rdfs:label "admit"@en .
+:investigate a frac:Observable ; rdfs:label "investigate"@en .
+:expose a frac:Observable ; rdfs:label "expose"@en .
+:prevent a frac:Observable ; rdfs:label "prevent"@en .
+:combat a frac:Observable ; rdfs:label "combat"@en .
+:reduce a frac:Observable ; rdfs:label "reduce"@en .
+:record a frac:Observable ; rdfs:label "record"@en .
+:discuss a frac:Observable ; rdfs:label "discuss"@en .
+:analyse a frac:Observable ; rdfs:label "analyse"@en .
+:solve a frac:Observable ; rdfs:label "solve"@en .
+:mention a frac:Observable ; rdfs:label "mention"@en .
+:classify a frac:Observable ; rdfs:label "classify"@en .
 
-:Corpus_A a prov:Entity ; rdfs:label "English synthetic corpus snapshot A"@en ; prov:atLocation "corpus/corpus_a.txt" ; dct:description "Deterministically generated evaluation corpus with 17616 sentences and 171736 word tokens."@en .
-:Corpus_B a prov:Entity ; rdfs:label "English synthetic corpus snapshot B"@en ; prov:atLocation "corpus/corpus_b.txt" ; dct:description "Deterministically generated evaluation corpus with 17620 sentences and 171764 word tokens."@en .
+:Corpus_A a prov:Entity ; rdfs:label "English synthetic corpus snapshot A"@en ; prov:atLocation "corpus/corpus_a.txt" ; dct:description "Deterministically generated evaluation corpus with 17616 sentences and 165477 word tokens."@en .
+:Corpus_B a prov:Entity ; rdfs:label "English synthetic corpus snapshot B"@en ; prov:atLocation "corpus/corpus_b.txt" ; dct:description "Deterministically generated evaluation corpus with 17620 sentences and 165525 word tokens."@en .
 
-# Run r1 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1.
-:obs_r1_heavy a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :heavy ; frac:observedIn :Corpus_A ;
+# Run r1 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1.
+:obs_r1_commit a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :commit ; frac:observedIn :Corpus_A ;
     collscore:logDice "9.62"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r1_torrential a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :torrential ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r1_report a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :report ; frac:observedIn :Corpus_A ;
     collscore:logDice "9.31"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r1_intermittent a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :intermittent ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r1_investigate a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :investigate ; frac:observedIn :Corpus_A ;
     collscore:logDice "7.25"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r1_soaking a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :soaking ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r1_prevent a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :prevent ; frac:observedIn :Corpus_A ;
     collscore:logDice "6.87"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r1_seasonal a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :seasonal ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r1_solve a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :solve ; frac:observedIn :Corpus_A ;
     collscore:logDice "5.34"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
 
-# Run r2 -- Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1.
-:obs_r2_heavy a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :heavy ; frac:observedIn :Corpus_A ;
+# Run r2 -- Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1.
+:obs_r2_commit a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :commit ; frac:observedIn :Corpus_A ;
     collscore:logDice "10.09"^^xsd:decimal ;
-    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r2_torrential a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :torrential ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r2_report a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :report ; frac:observedIn :Corpus_A ;
     collscore:logDice "9.81"^^xsd:decimal ;
-    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r2_intermittent a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :intermittent ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r2_investigate a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :investigate ; frac:observedIn :Corpus_A ;
     collscore:logDice "7.92"^^xsd:decimal ;
-    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r2_soaking a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :soaking ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r2_prevent a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :prevent ; frac:observedIn :Corpus_A ;
     collscore:logDice "7.59"^^xsd:decimal ;
-    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r2_seasonal a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :seasonal ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r2_solve a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :solve ; frac:observedIn :Corpus_A ;
     collscore:logDice "6.17"^^xsd:decimal ;
-    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
+    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
 
-# Run r3 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1.
-:obs_r3_heavy a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :heavy ; frac:observedIn :Corpus_B ;
+# Run r3 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1.
+:obs_r3_commit a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :commit ; frac:observedIn :Corpus_B ;
     collscore:logDice "9.50"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r3_torrential a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :torrential ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r3_report a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :report ; frac:observedIn :Corpus_B ;
     collscore:logDice "9.45"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r3_intermittent a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :intermittent ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r3_investigate a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :investigate ; frac:observedIn :Corpus_B ;
     collscore:logDice "6.97"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r3_soaking a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :soaking ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r3_prevent a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :prevent ; frac:observedIn :Corpus_B ;
     collscore:logDice "6.49"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r3_seasonal a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :seasonal ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r3_solve a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :solve ; frac:observedIn :Corpus_B ;
     collscore:logDice "5.17"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
 
-# Run r4 -- Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1.
-:obs_r4_heavy a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :heavy ; frac:observedIn :Corpus_B ;
+# Run r4 -- Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1.
+:obs_r4_commit a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :commit ; frac:observedIn :Corpus_B ;
     collscore:logDice "9.97"^^xsd:decimal ;
-    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r4_torrential a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :torrential ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r4_report a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :report ; frac:observedIn :Corpus_B ;
     collscore:logDice "9.99"^^xsd:decimal ;
-    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r4_intermittent a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :intermittent ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r4_investigate a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :investigate ; frac:observedIn :Corpus_B ;
     collscore:logDice "7.62"^^xsd:decimal ;
-    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r4_soaking a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :soaking ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r4_prevent a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :prevent ; frac:observedIn :Corpus_B ;
     collscore:logDice "7.25"^^xsd:decimal ;
-    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r4_seasonal a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :seasonal ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r4_solve a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :solve ; frac:observedIn :Corpus_B ;
     collscore:logDice "5.98"^^xsd:decimal ;
-    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
+    dct:description "Symmetric 10-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
 
-# Run r5 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern ADJ NOUN; logDice; Extractor v1.
-:obs_r5_heavy a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :heavy ; frac:observedIn :Corpus_A ;
+# Run r5 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern VERB NOUN; logDice; Extractor v1.
+:obs_r5_commit a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :commit ; frac:observedIn :Corpus_A ;
     collscore:logDice "9.62"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r5_torrential a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :torrential ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r5_report a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :report ; frac:observedIn :Corpus_A ;
     collscore:logDice "9.31"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r5_intermittent a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :intermittent ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r5_investigate a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :investigate ; frac:observedIn :Corpus_A ;
     collscore:logDice "7.25"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r5_soaking a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :soaking ; frac:observedIn :Corpus_A ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r5_prevent a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :prevent ; frac:observedIn :Corpus_A ;
     collscore:logDice "6.87"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern VERB NOUN; logDice; Extractor v1."@en .
 
-# Run r6 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v2.
-:obs_r6_heavy a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :heavy ; frac:observedIn :Corpus_B ;
+# Run r6 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v2.
+:obs_r6_commit a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :commit ; frac:observedIn :Corpus_B ;
     collscore:logDice "9.50"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v2."@en .
-:obs_r6_torrential a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :torrential ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v2."@en .
+:obs_r6_report a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :report ; frac:observedIn :Corpus_B ;
     collscore:logDice "9.45"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v2."@en .
-:obs_r6_intermittent a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :intermittent ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v2."@en .
+:obs_r6_investigate a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :investigate ; frac:observedIn :Corpus_B ;
     collscore:logDice "6.97"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v2."@en .
-:obs_r6_soaking a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :soaking ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v2."@en .
+:obs_r6_prevent a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :prevent ; frac:observedIn :Corpus_B ;
     collscore:logDice "6.49"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v2."@en .
-:obs_r6_seasonal a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :seasonal ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v2."@en .
+:obs_r6_solve a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :solve ; frac:observedIn :Corpus_B ;
     collscore:logDice "5.17"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v2."@en .
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v2."@en .
 
-# Run r7 -- Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1.
-:obs_r7_heavy a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :heavy ; frac:observedIn :Corpus_A ;
+# Run r7 -- Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1.
+:obs_r7_commit a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :commit ; frac:observedIn :Corpus_A ;
     collscore:logDice "9.62"^^xsd:decimal ;
-    dct:description "Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r7_torrential a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :torrential ; frac:observedIn :Corpus_A ;
+    dct:description "Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r7_report a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :report ; frac:observedIn :Corpus_A ;
     collscore:logDice "9.31"^^xsd:decimal ;
-    dct:description "Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r7_intermittent a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :intermittent ; frac:observedIn :Corpus_A ;
+    dct:description "Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r7_investigate a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :investigate ; frac:observedIn :Corpus_A ;
     collscore:logDice "7.25"^^xsd:decimal ;
-    dct:description "Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r7_soaking a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :soaking ; frac:observedIn :Corpus_A ;
+    dct:description "Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r7_prevent a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :prevent ; frac:observedIn :Corpus_A ;
     collscore:logDice "6.87"^^xsd:decimal ;
-    dct:description "Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r7_seasonal a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :seasonal ; frac:observedIn :Corpus_A ;
+    dct:description "Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r7_solve a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :solve ; frac:observedIn :Corpus_A ;
     collscore:logDice "5.34"^^xsd:decimal ;
-    dct:description "Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
+    dct:description "Left window 5; right window not recorded; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1."@en .
 
-# Run r8 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern ADJ NOUN; logDice; Extractor v1.
-:obs_r8_heavy a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :heavy ; frac:observedIn :Corpus_B ;
+# Run r8 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern VERB NOUN; logDice; Extractor v1.
+:obs_r8_commit a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :commit ; frac:observedIn :Corpus_B ;
     collscore:logDice "9.50"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r8_torrential a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :torrential ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r8_report a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :report ; frac:observedIn :Corpus_B ;
     collscore:logDice "9.45"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r8_intermittent a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :intermittent ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r8_investigate a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :investigate ; frac:observedIn :Corpus_B ;
     collscore:logDice "6.97"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
-:obs_r8_soaking a frac:Collocation ;
-    frac:head :rain ; rdfs:member :rain, :soaking ; frac:observedIn :Corpus_B ;
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern VERB NOUN; logDice; Extractor v1."@en .
+:obs_r8_prevent a frac:Collocation ;
+    frac:head :crime ; rdfs:member :crime, :prevent ; frac:observedIn :Corpus_B ;
     collscore:logDice "6.49"^^xsd:decimal ;
-    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern ADJ NOUN; logDice; Extractor v1."@en .
+    dct:description "Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 10; POS pattern VERB NOUN; logDice; Extractor v1."@en .
 
 # CPP plan and shared variables
 cpp:collocationExtractionPlan a p-plan:Plan .
@@ -248,79 +248,79 @@ cpp:collocationObservation a p-plan:Variable ; rdfs:label "collocation observati
 :ordered_false a p-plan:Entity ; p-plan:correspondsToVariable cpp:ordered ; prov:value false .
 :minimumFrequency_3 a p-plan:Entity ; p-plan:correspondsToVariable cpp:minimumFrequency ; prov:value "3"^^xsd:integer .
 :minimumFrequency_10 a p-plan:Entity ; p-plan:correspondsToVariable cpp:minimumFrequency ; prov:value "10"^^xsd:integer .
-:posPattern_ADJ_NOUN a p-plan:Entity, rdf:Seq ; p-plan:correspondsToVariable cpp:posPattern ; rdf:_1 lexinfo:adjective ; rdf:_2 lexinfo:noun .
+:posPattern_VERB_NOUN a p-plan:Entity, rdf:Seq ; p-plan:correspondsToVariable cpp:posPattern ; rdf:_1 lexinfo:verb ; rdf:_2 lexinfo:noun .
 :measure_logDice a p-plan:Entity, rdf:Bag ; p-plan:correspondsToVariable cpp:measures ; rdfs:member collscore:LogDice .
 
 # Runs
 :r1 a p-plan:Activity, prov:Activity ; p-plan:correspondsToStep cpp:extractCollocations ;
-    prov:used :Corpus_A, :Index_A, :windowLeft_5, :windowRight_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_ADJ_NOUN, :measure_logDice ;
+    prov:used :Corpus_A, :Index_A, :windowLeft_5, :windowRight_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_VERB_NOUN, :measure_logDice ;
     prov:wasAssociatedWith :Extractor_v1, :Lexicographer_A ;
-    prov:generated :obs_r1_heavy, :obs_r1_torrential, :obs_r1_intermittent, :obs_r1_soaking, :obs_r1_seasonal .
+    prov:generated :obs_r1_commit, :obs_r1_report, :obs_r1_investigate, :obs_r1_prevent, :obs_r1_solve .
 :r2 a p-plan:Activity, prov:Activity ; p-plan:correspondsToStep cpp:extractCollocations ;
-    prov:used :Corpus_A, :Index_A, :windowLeft_10, :windowRight_10, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_ADJ_NOUN, :measure_logDice ;
+    prov:used :Corpus_A, :Index_A, :windowLeft_10, :windowRight_10, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_VERB_NOUN, :measure_logDice ;
     prov:wasAssociatedWith :Extractor_v1, :Lexicographer_B ;
-    prov:generated :obs_r2_heavy, :obs_r2_torrential, :obs_r2_intermittent, :obs_r2_soaking, :obs_r2_seasonal .
+    prov:generated :obs_r2_commit, :obs_r2_report, :obs_r2_investigate, :obs_r2_prevent, :obs_r2_solve .
 :r3 a p-plan:Activity, prov:Activity ; p-plan:correspondsToStep cpp:extractCollocations ;
-    prov:used :Corpus_B, :Index_B, :windowLeft_5, :windowRight_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_ADJ_NOUN, :measure_logDice ;
+    prov:used :Corpus_B, :Index_B, :windowLeft_5, :windowRight_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_VERB_NOUN, :measure_logDice ;
     prov:wasAssociatedWith :Extractor_v1, :Lexicographer_A ;
-    prov:generated :obs_r3_heavy, :obs_r3_torrential, :obs_r3_intermittent, :obs_r3_soaking, :obs_r3_seasonal .
+    prov:generated :obs_r3_commit, :obs_r3_report, :obs_r3_investigate, :obs_r3_prevent, :obs_r3_solve .
 :r4 a p-plan:Activity, prov:Activity ; p-plan:correspondsToStep cpp:extractCollocations ;
-    prov:used :Corpus_B, :Index_B, :windowLeft_10, :windowRight_10, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_ADJ_NOUN, :measure_logDice ;
+    prov:used :Corpus_B, :Index_B, :windowLeft_10, :windowRight_10, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_VERB_NOUN, :measure_logDice ;
     prov:wasAssociatedWith :Extractor_v1, :Lexicographer_B ;
-    prov:generated :obs_r4_heavy, :obs_r4_torrential, :obs_r4_intermittent, :obs_r4_soaking, :obs_r4_seasonal .
+    prov:generated :obs_r4_commit, :obs_r4_report, :obs_r4_investigate, :obs_r4_prevent, :obs_r4_solve .
 :r5 a p-plan:Activity, prov:Activity ; p-plan:correspondsToStep cpp:extractCollocations ;
-    prov:used :Corpus_A, :Index_A, :windowLeft_5, :windowRight_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_10, :posPattern_ADJ_NOUN, :measure_logDice ;
+    prov:used :Corpus_A, :Index_A, :windowLeft_5, :windowRight_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_10, :posPattern_VERB_NOUN, :measure_logDice ;
     prov:wasAssociatedWith :Extractor_v1, :Lexicographer_C ;
-    prov:generated :obs_r5_heavy, :obs_r5_torrential, :obs_r5_intermittent, :obs_r5_soaking .
+    prov:generated :obs_r5_commit, :obs_r5_report, :obs_r5_investigate, :obs_r5_prevent .
 :r6 a p-plan:Activity, prov:Activity ; p-plan:correspondsToStep cpp:extractCollocations ;
-    prov:used :Corpus_B, :Index_B, :windowLeft_5, :windowRight_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_ADJ_NOUN, :measure_logDice ;
+    prov:used :Corpus_B, :Index_B, :windowLeft_5, :windowRight_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_VERB_NOUN, :measure_logDice ;
     prov:wasAssociatedWith :Extractor_v2, :Lexicographer_A ;
-    prov:generated :obs_r6_heavy, :obs_r6_torrential, :obs_r6_intermittent, :obs_r6_soaking, :obs_r6_seasonal .
+    prov:generated :obs_r6_commit, :obs_r6_report, :obs_r6_investigate, :obs_r6_prevent, :obs_r6_solve .
 :r7 a p-plan:Activity, prov:Activity ; p-plan:correspondsToStep cpp:extractCollocations ;
-    prov:used :Corpus_A, :Index_A, :windowLeft_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_ADJ_NOUN, :measure_logDice ;
+    prov:used :Corpus_A, :Index_A, :windowLeft_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_3, :posPattern_VERB_NOUN, :measure_logDice ;
     prov:wasAssociatedWith :Extractor_v1, :Lexicographer_B ;
-    prov:generated :obs_r7_heavy, :obs_r7_torrential, :obs_r7_intermittent, :obs_r7_soaking, :obs_r7_seasonal .
+    prov:generated :obs_r7_commit, :obs_r7_report, :obs_r7_investigate, :obs_r7_prevent, :obs_r7_solve .
 :r8 a p-plan:Activity, prov:Activity ; p-plan:correspondsToStep cpp:extractCollocations ;
-    prov:used :Corpus_B, :Index_B, :windowLeft_5, :windowRight_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_10, :posPattern_ADJ_NOUN, :measure_logDice ;
+    prov:used :Corpus_B, :Index_B, :windowLeft_5, :windowRight_5, :sentenceBoundary_true, :ordered_false, :minimumFrequency_10, :posPattern_VERB_NOUN, :measure_logDice ;
     prov:wasAssociatedWith :Extractor_v1, :Lexicographer_C ;
-    prov:generated :obs_r8_heavy, :obs_r8_torrential, :obs_r8_intermittent, :obs_r8_soaking .
+    prov:generated :obs_r8_commit, :obs_r8_report, :obs_r8_investigate, :obs_r8_prevent .
 
 # Link each observation to the run that generated it
-:obs_r1_heavy prov:wasGeneratedBy :r1 .
-:obs_r1_torrential prov:wasGeneratedBy :r1 .
-:obs_r1_intermittent prov:wasGeneratedBy :r1 .
-:obs_r1_soaking prov:wasGeneratedBy :r1 .
-:obs_r1_seasonal prov:wasGeneratedBy :r1 .
-:obs_r2_heavy prov:wasGeneratedBy :r2 .
-:obs_r2_torrential prov:wasGeneratedBy :r2 .
-:obs_r2_intermittent prov:wasGeneratedBy :r2 .
-:obs_r2_soaking prov:wasGeneratedBy :r2 .
-:obs_r2_seasonal prov:wasGeneratedBy :r2 .
-:obs_r3_heavy prov:wasGeneratedBy :r3 .
-:obs_r3_torrential prov:wasGeneratedBy :r3 .
-:obs_r3_intermittent prov:wasGeneratedBy :r3 .
-:obs_r3_soaking prov:wasGeneratedBy :r3 .
-:obs_r3_seasonal prov:wasGeneratedBy :r3 .
-:obs_r4_heavy prov:wasGeneratedBy :r4 .
-:obs_r4_torrential prov:wasGeneratedBy :r4 .
-:obs_r4_intermittent prov:wasGeneratedBy :r4 .
-:obs_r4_soaking prov:wasGeneratedBy :r4 .
-:obs_r4_seasonal prov:wasGeneratedBy :r4 .
-:obs_r5_heavy prov:wasGeneratedBy :r5 .
-:obs_r5_torrential prov:wasGeneratedBy :r5 .
-:obs_r5_intermittent prov:wasGeneratedBy :r5 .
-:obs_r5_soaking prov:wasGeneratedBy :r5 .
-:obs_r6_heavy prov:wasGeneratedBy :r6 .
-:obs_r6_torrential prov:wasGeneratedBy :r6 .
-:obs_r6_intermittent prov:wasGeneratedBy :r6 .
-:obs_r6_soaking prov:wasGeneratedBy :r6 .
-:obs_r6_seasonal prov:wasGeneratedBy :r6 .
-:obs_r7_heavy prov:wasGeneratedBy :r7 .
-:obs_r7_torrential prov:wasGeneratedBy :r7 .
-:obs_r7_intermittent prov:wasGeneratedBy :r7 .
-:obs_r7_soaking prov:wasGeneratedBy :r7 .
-:obs_r7_seasonal prov:wasGeneratedBy :r7 .
-:obs_r8_heavy prov:wasGeneratedBy :r8 .
-:obs_r8_torrential prov:wasGeneratedBy :r8 .
-:obs_r8_intermittent prov:wasGeneratedBy :r8 .
-:obs_r8_soaking prov:wasGeneratedBy :r8 .
+:obs_r1_commit prov:wasGeneratedBy :r1 .
+:obs_r1_report prov:wasGeneratedBy :r1 .
+:obs_r1_investigate prov:wasGeneratedBy :r1 .
+:obs_r1_prevent prov:wasGeneratedBy :r1 .
+:obs_r1_solve prov:wasGeneratedBy :r1 .
+:obs_r2_commit prov:wasGeneratedBy :r2 .
+:obs_r2_report prov:wasGeneratedBy :r2 .
+:obs_r2_investigate prov:wasGeneratedBy :r2 .
+:obs_r2_prevent prov:wasGeneratedBy :r2 .
+:obs_r2_solve prov:wasGeneratedBy :r2 .
+:obs_r3_commit prov:wasGeneratedBy :r3 .
+:obs_r3_report prov:wasGeneratedBy :r3 .
+:obs_r3_investigate prov:wasGeneratedBy :r3 .
+:obs_r3_prevent prov:wasGeneratedBy :r3 .
+:obs_r3_solve prov:wasGeneratedBy :r3 .
+:obs_r4_commit prov:wasGeneratedBy :r4 .
+:obs_r4_report prov:wasGeneratedBy :r4 .
+:obs_r4_investigate prov:wasGeneratedBy :r4 .
+:obs_r4_prevent prov:wasGeneratedBy :r4 .
+:obs_r4_solve prov:wasGeneratedBy :r4 .
+:obs_r5_commit prov:wasGeneratedBy :r5 .
+:obs_r5_report prov:wasGeneratedBy :r5 .
+:obs_r5_investigate prov:wasGeneratedBy :r5 .
+:obs_r5_prevent prov:wasGeneratedBy :r5 .
+:obs_r6_commit prov:wasGeneratedBy :r6 .
+:obs_r6_report prov:wasGeneratedBy :r6 .
+:obs_r6_investigate prov:wasGeneratedBy :r6 .
+:obs_r6_prevent prov:wasGeneratedBy :r6 .
+:obs_r6_solve prov:wasGeneratedBy :r6 .
+:obs_r7_commit prov:wasGeneratedBy :r7 .
+:obs_r7_report prov:wasGeneratedBy :r7 .
+:obs_r7_investigate prov:wasGeneratedBy :r7 .
+:obs_r7_prevent prov:wasGeneratedBy :r7 .
+:obs_r7_solve prov:wasGeneratedBy :r7 .
+:obs_r8_commit prov:wasGeneratedBy :r8 .
+:obs_r8_report prov:wasGeneratedBy :r8 .
+:obs_r8_investigate prov:wasGeneratedBy :r8 .
+:obs_r8_prevent prov:wasGeneratedBy :r8 .

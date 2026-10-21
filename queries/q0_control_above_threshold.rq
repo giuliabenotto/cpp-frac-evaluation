@@ -7,9 +7,9 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?observation ?collocate ?score
 WHERE {
   ?observation a frac:Collocation ;
-      frac:head :rain ;
-      rdfs:member :rain, ?collocate ;
+      frac:head :crime ;
+      rdfs:member :crime, ?collocate ;
       collscore:logDice ?score .
-  FILTER (?collocate != :rain && ?score >= 7)
+  FILTER (?collocate != :crime && ?score >= 7)
 }
 ORDER BY ?observation

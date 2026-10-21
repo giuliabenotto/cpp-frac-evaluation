@@ -1,3 +1,3 @@
-corpus,sentences,tokens,rain_tokens
-Corpus_A,17616,171736,6936
-Corpus_B,17620,171764,6940
+corpus,sentences,tokens,crime_tokens
+Corpus_A,17616,165477,6936
+Corpus_B,17620,165525,6940

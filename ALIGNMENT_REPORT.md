@@ -33,7 +33,7 @@ Results of the execution:
 | CQ3 | 0 | 14 | PASS |
 | CQ4 | 0 | 3 | PASS |
 
-Corpus A: 17,616 sentences, 171,736 tokens. Corpus B: 17,620 sentences, 171,764 tokens. Both graphs contain 38 FrAC collocation observations. Triple counts: 324 baseline, 601 enriched.
+Corpus A: 17,616 sentences, 165,477 tokens. Corpus B: 17,620 sentences, 165,525 tokens. Both graphs contain 38 FrAC collocation observations. Triple counts: 324 baseline, 601 enriched.
 
 ## Scope and remaining limitations
 
@@ -41,3 +41,7 @@ Corpus A: 17,616 sentences, 171,736 tokens. Corpus B: 17,620 sentences, 171,764 
 - The enriched ABox is a functional evaluation dataset using CPP terms and P-Plan/PROV-O relations. It does not explicitly type all its instances with specialized CPP classes; a more comprehensive conformance demonstration would add such assertions and validation tests.
 - Success of these SPARQL tests does not constitute an OWL 2 DL consistency check with imports resolved, nor a naturalistic linguistic evaluation.
 - No license for the evaluation package is implied by the CC BY 4.0 license used in the separate CPP ontology repository. Choose a license for the benchmark before public release.
+
+## Crime-focused regeneration — 2026-10-21
+
+Both corpus snapshots were regenerated from the verb–crime sentence templates, with exact count checks across the 24 verb profiles (distance ≤5 / distance ≤10). The head `crime` occurs 6,936 times in Corpus A (165,477 tokens) and 6,940 times in Corpus B (165,525 tokens). The corpus cooccurrence profiles and logDice values were intentionally held numerically equal to those in the prior example; new lexical labels are not an independent linguistic evaluation. The five FrAC evaluation candidates are commit, report, investigate, prevent and solve. CPP configuration is VERB NOUN. Rebuild and test with the scripts before scientific submission.

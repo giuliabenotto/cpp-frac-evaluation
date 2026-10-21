@@ -34,8 +34,8 @@
 :mention a frac:Observable ; rdfs:label "mention"@en .
 :classify a frac:Observable ; rdfs:label "classify"@en .
 
-:Corpus_A a prov:Entity ; rdfs:label "English synthetic corpus snapshot A"@en ; prov:atLocation "corpus/corpus_a.txt" ; dct:description "Deterministically generated evaluation corpus with 17616 sentences and 171736 word tokens."@en .
-:Corpus_B a prov:Entity ; rdfs:label "English synthetic corpus snapshot B"@en ; prov:atLocation "corpus/corpus_b.txt" ; dct:description "Deterministically generated evaluation corpus with 17620 sentences and 171764 word tokens."@en .
+:Corpus_A a prov:Entity ; rdfs:label "English synthetic corpus snapshot A"@en ; prov:atLocation "corpus/corpus_a.txt" ; dct:description "Deterministically generated evaluation corpus with 17616 sentences and 165477 word tokens."@en .
+:Corpus_B a prov:Entity ; rdfs:label "English synthetic corpus snapshot B"@en ; prov:atLocation "corpus/corpus_b.txt" ; dct:description "Deterministically generated evaluation corpus with 17620 sentences and 165525 word tokens."@en .
 
 # Run r1 -- Symmetric 5-token window; sentence-bounded; unordered; minimum frequency 3; POS pattern VERB NOUN; logDice; Extractor v1.
 :obs_r1_heavy a frac:Collocation ;
